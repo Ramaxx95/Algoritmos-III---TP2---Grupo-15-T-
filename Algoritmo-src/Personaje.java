@@ -4,13 +4,11 @@ import java.util.ArrayList;
 
 public class Personaje {
 
-    private int posicionX;
-    private int  posicionY;
+    private Posicion posicion;
     private boolean lapiz_abajo;
 
     public Personaje(){
-        this.posicionX = 5;
-        this.posicionY = 5;
+        this.posicion = new Posicion(5,5);
         this.lapiz_abajo = false;
     }
 
@@ -19,14 +17,14 @@ public class Personaje {
     }
 
     public void moverseA(int posicion_x, int posicion_y){
-        this.posicionX = this.posicionX + posicion_x;
-        this.posicionY = this.posicionY + posicion_y;
+        this.posicion.moverEnX(posicion_x);
+        this.posicion.moverEnY(posicion_y);
     }
 
     public ArrayList<Integer> getPosicion(){
-        ArrayList<Integer> posicion = new ArrayList<Integer>(2);
-        posicion.add(this.posicionX);
-        posicion.add(this.posicionY);   //posicion = (x,y)
+        ArrayList<Integer> posicion = new ArrayList<>(2);
+        posicion.add(this.posicion.getColumna());
+        posicion.add(this.posicion.getFila());   //posicion = (x,y)
         return posicion;
     }
 

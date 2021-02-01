@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class Juego {
 
-    private Algoritmo algoritmo;
+    private Tablero tablero;
     private Personaje personaje;
 
     public Juego(){
-        this.algoritmo = new Algoritmo();
+        this.tablero = new Tablero();
         this.personaje = new Personaje();
     }
 
     public void agregarBloque(Bloques un_bloque){
-        this.algoritmo.agregarBloque(un_bloque);
+        this.tablero.agregarBloqueAlAlgoritmo(un_bloque);
     }
 
     public ArrayList<Integer> posicionActual(){
@@ -25,7 +25,7 @@ public class Juego {
     }
 
     public void ejecutarAlgoritmo(){
-        this.algoritmo.ejecutar(this.personaje);
+        this.tablero.ejecutarAlgoritmoCon(this.personaje);
     }
 
 }

@@ -37,4 +37,47 @@ class JuegoTest {
         assertEquals(5, juego_prueba.posicionActual().get(1));
     }
 
+    @Test
+    public void test03MoverAlPersonajeConBloqueDeRepeticionDeDosPasosALaDerecha(){
+
+        Juego juego_prueba = new Juego();
+        MoverDerecha bloque_mover_derecha = new MoverDerecha();
+        Repeticion bloque_repeticion = new RepetirDosVeces();
+
+        bloque_repeticion.agregarBloque(bloque_mover_derecha);
+        juego_prueba.agregarBloque(bloque_repeticion);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(7, juego_prueba.posicionActual().get(0));
+    }
+
+    @Test
+    public void test04MoverAlPersonajeConBloqueDeRepeticionDeTresPasosHaciaAbajo(){
+
+        Juego juego_prueba = new Juego();
+        MoverAbajo bloque_mover_abajo = new MoverAbajo();
+        Repeticion bloque_repeticion = new RepetirTresVeces();
+
+        bloque_repeticion.agregarBloque(bloque_mover_abajo);
+        juego_prueba.agregarBloque(bloque_repeticion);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(2, juego_prueba.posicionActual().get(1));
+    }
+
+    @Test
+    public void test05UsarDosBloquesDeRepeticionParaMoverse4EspaciosHaciaAbajo(){
+
+        Juego juego_prueba = new Juego();
+        MoverAbajo bloque_mover_abajo = new MoverAbajo();
+        Repeticion bloque_repeticion_1 = new RepetirDosVeces();
+        Repeticion bloque_repeticion_2 = new RepetirDosVeces();
+
+        bloque_repeticion_1.agregarBloque(bloque_repeticion_2);
+        bloque_repeticion_2.agregarBloque(bloque_mover_abajo);
+        juego_prueba.agregarBloque(bloque_repeticion_1);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(1, juego_prueba.posicionActual().get(1));
+    }
 }

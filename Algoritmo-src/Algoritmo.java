@@ -7,7 +7,7 @@ public class Algoritmo {
     private ArrayList<Bloques> listaAlgoritmo;
 
     public Algoritmo(){
-        this.listaAlgoritmo = new ArrayList<Bloques>();
+        this.listaAlgoritmo = new ArrayList<>();
     }
 
     public void agregarBloque(Bloques un_bloque){
@@ -15,10 +15,6 @@ public class Algoritmo {
     }
 
     public void ejecutar(Personaje un_personaje){
-        Bloques bloque;
-        for (int i = 0; i < this.listaAlgoritmo.size(); i++){
-            bloque = this.listaAlgoritmo.get(i);
-            bloque.ejecutarBloque(un_personaje);
-        }
+        this.listaAlgoritmo.forEach(bloques -> bloques.ejecutarBloque(un_personaje));
     }
 }

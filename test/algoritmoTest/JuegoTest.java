@@ -96,5 +96,19 @@ public class JuegoTest {
 
         assertEquals(1, juego_prueba.posicionActual().getFila());
     }
+
+    @Test
+    public void test06MoverPersonajeArribaConLapizAbajoDibuja(){
+
+        Juego juego_prueba = new Juego();
+        MoverArriba bloque_mover_arriba = new MoverArriba();
+        BajarLapiz bloque_bajar_lapiz = new BajarLapiz();
+
+        juego_prueba.agregarBloque(bloque_bajar_lapiz);
+        juego_prueba.agregarBloque(bloque_mover_arriba);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertTrue(juego_prueba.personajePuedeEscribir());
+    }
     
 }

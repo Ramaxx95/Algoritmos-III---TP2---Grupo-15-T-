@@ -16,7 +16,7 @@ public class Algoritmo {
         this.listaAlgoritmo.add(un_bloque);
     }
 
-    public void ejecutar(Personaje un_personaje){
-        this.listaAlgoritmo.forEach(bloques -> bloques.ejecutarBloque(un_personaje));
+    public void ejecutar(Personaje un_personaje, Dibujo un_dibujo){
+        this.listaAlgoritmo.forEach(bloques -> bloques.ejecutarBloque(un_personaje, un_dibujo));
     }
 }

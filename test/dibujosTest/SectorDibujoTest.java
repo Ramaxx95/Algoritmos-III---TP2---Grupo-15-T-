@@ -17,14 +17,14 @@ public class SectorDibujoTest {
 
 	
 	@Test
-	public void sectorDibujoSeCreoYpuedeDibujar(){
+	public void test01SectorDibujoSeCreoYpuedeDibujar(){
 		SectorDibujo sectorDi = new SectorDibujo();
 		Assert.assertTrue(sectorDi.PuedeDibujar() );
 	}
 	
 	
 	@Test
-	public void sectorDibujoSeCreoYDibujaCorrectamente(){
+	public void test02SectorDibujoSeCreoYDibujaCorrectamente(){
 		SectorDibujo sectorDi = new SectorDibujo();
 		Personaje personaje = new Personaje();
 		personaje.moverseA(0, 1);

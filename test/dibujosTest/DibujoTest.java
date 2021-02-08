@@ -15,13 +15,13 @@ import dibujos.Dibujo;
 public class DibujoTest {
 	
 	@Test
-	public void DibujoSeCreoYestaVacio(){
+	public void test01DibujoSeCreoYestaVacio(){
 		Dibujo dibujo = new Dibujo();
 		Assert.assertTrue(dibujo.estaEnBlanco());
 	}
 	
 	@Test
-	public void DibujoSeCreoYDibuja(){
+	public void test02DibujoSeCreoYDibuja(){
 		Dibujo dibujo = new Dibujo();
 		Posicion posicion = new Posicion(0,0);
 		
@@ -32,7 +32,7 @@ public class DibujoTest {
 	
 	
 	@Test
-	public void SeCreaDosDibujosYSonIguales(){
+	public void test03SeCreaDosDibujosYSonIguales(){
 		Dibujo dibujo = new Dibujo();
 		Dibujo otroDibujo = new Dibujo();
 		Posicion posicionUno = new Posicion(0,0);
@@ -52,7 +52,7 @@ public class DibujoTest {
 	}
 	
 	@Test
-	public void SeCreaDosDibujosYNoSonIguales(){
+	public void test04SeCreaDosDibujosYNoSonIguales(){
 		Dibujo dibujo = new Dibujo();
 		Dibujo otroDibujo = new Dibujo();
 		Posicion posicionUno = new Posicion(0,0);
@@ -71,6 +71,29 @@ public class DibujoTest {
 		
 		Assert.assertFalse(dibujo.EsIgualA(otroDibujo));
 	}
+
+	@Test
+    public void test05PersonajeSeMueveConLapizAbajoYCreaDibujo(){
+		Tablero tablero_prueba = new Tablero();
+		Personaje personaje_prueba = new Personaje();
+
+        personaje_prueba.bajarLapiz();
+		personaje_prueba.moverseA(1, 0);
+		tablero_prueba.ejecutarAlgoritmoCon(personaje_prueba);
+		
+		Assert.assertFalse(tablero_prueba.getDibujo().estaEnBlanco());
+	}
+	
+	@Test
+    public void test06PersonajeSeMueveConLapizArribaYNoCreaDibujo(){
+		Tablero tablero_prueba = new Tablero();
+		Personaje personaje_prueba = new Personaje();
+
+		personaje_prueba.moverseA(1, 0);
+		tablero_prueba.ejecutarAlgoritmoCon(personaje_prueba);
+		
+		Assert.assertTrue(tablero_prueba.getDibujo().estaEnBlanco());
+    }
 	
 	
 }

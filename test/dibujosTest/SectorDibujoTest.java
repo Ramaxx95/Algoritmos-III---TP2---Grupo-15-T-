@@ -1,15 +1,9 @@
 package dibujosTest;
 
-import junit.framework.Assert;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Random;
-
-import org.junit.Test;
-
-import algoritmo.Personaje;
-import algoritmo.Posicion;
-import bloques.MoverArriba;
+import algoritmo.*;
 import dibujos.*;
 
 
@@ -27,17 +21,21 @@ public class SectorDibujoTest {
 	public void test02SectorDibujoSeCreoYDibujaCorrectamente(){
 		SectorDibujo sectorDi = new SectorDibujo();
 		Personaje personaje = new Personaje();
-		personaje.moverseA(0, 1);
+		Posicion posicion_1 = new Posicion(5,5);
+        	Posicion posicion_2 = new Posicion(5,6);
 		
-		sectorDi.ActualizarPosicion(personaje);
+		personaje.bajarLapiz();
+        	sectorDi.ActualizarPosicion(personaje);
+        	personaje.moverseA(0, 1);
+        	sectorDi.ActualizarPosicion(personaje);
 		
 		
 		Dibujo dibujo = new Dibujo();
-		dibujo.DibujarEn(new Posicion(5,5));
-		dibujo.DibujarEn(new Posicion(6,5));
+		dibujo.DibujarEn(posicion_1), personaje);
+		dibujo.DibujarEn(posicion_2, personaje);
 		Dibujo otroDibujo = sectorDi.getDibujo();
 		
-		Assert.assertTrue(dibujo.EsIgualA(otroDibujo) );
+		assertTrue(dibujo.EsIgualA(otroDibujo) );
 	}
 	
 }

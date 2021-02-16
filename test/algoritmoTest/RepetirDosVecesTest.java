@@ -1,11 +1,7 @@
 package algoritmoTest;
 
-import junit.framework.Assert;
-
-import java.util.ArrayList;
-import java.util.Random;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import algoritmo.*;
 import bloques.MoverArriba;
@@ -21,16 +17,17 @@ public class RepetirDosVecesTest {
 		
 		Personaje personaje =new Personaje();
 		RepetirDosVeces repeticion = new RepetirDosVeces();
+		Dibujo dibujo = new Dibujo();
 		
-		repeticion.ejecutarBloque(personaje);
+		repeticion.ejecutarBloque(personaje, dibujo);
 		
 		Posicion posicionDelPersonaje = personaje.getPosicion();
 		Posicion posicionEsperada = new Posicion(5,5);
 		
-		Boolean iguales = posicionDelPersonaje.sonIguales(posicionDelPersonaje);
+		Boolean iguales = posicionDelPersonaje.sonIguales(posicionEsperada);
 		
 		
-		Assert.assertTrue(true);
+		assertTrue(iguales);
 		
 	}
 	
@@ -40,17 +37,18 @@ public class RepetirDosVecesTest {
 		Personaje personaje =new Personaje();
 		RepetirDosVeces repeticion = new RepetirDosVeces();
 		MoverArriba arriba = new MoverArriba();
+		Dibujo dibujo = new Dibujo();
 		
 		repeticion.agregarBloque(arriba);
-		repeticion.ejecutarBloque(personaje);
+		repeticion.ejecutarBloque(personaje, dibujo);
 		
 		Posicion posicionDelPersonaje = personaje.getPosicion();
 		Posicion posicionEsperada = new Posicion(5,7);
 		
-		Boolean iguales = posicionDelPersonaje.sonIguales(posicionDelPersonaje);
+		Boolean iguales = posicionDelPersonaje.sonIguales(posicionEsperda);
 		
 		
-		Assert.assertTrue(iguales);
+		assertTrue(iguales);
 		
 	}
 	

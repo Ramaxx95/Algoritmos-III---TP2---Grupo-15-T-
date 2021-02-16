@@ -1,10 +1,9 @@
 package algoritmoTest;
 
-import junit.framework.Assert;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
 import algoritmo.*;
+import bloques.*;
 
 class MovimientoTest {
 

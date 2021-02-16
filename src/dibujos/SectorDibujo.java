@@ -2,7 +2,6 @@ package dibujos;
 
 import algoritmo.Personaje;
 import algoritmo.Posicion;
-import bloques.MoverArriba;
 
 public class SectorDibujo{
 	
@@ -10,17 +9,18 @@ public class SectorDibujo{
 	
 	public SectorDibujo() {
 		dibujo = new Dibujo();
-		dibujo.DibujarEn(new Posicion(5,5));
 	}
 	
 
 	public boolean PuedeDibujar() {
-		return true;
+		return this.dibujo.estaEnBlanco();
 	}
 
 	public void ActualizarPosicion(Personaje personaje) {
-		Posicion posAux = personaje.getPosicion();
-		dibujo.DibujarEn(posAux);
+		int nueva_columna = personaje.getPosicion().getColumna();
+        	int nueva_fila = personaje.getPosicion().getFila();
+        	Posicion posAux = new Posicion(nueva_columna, nueva_fila);
+        	dibujo.DibujarEn(posAux, personaje);
 	}
 	
 	public Dibujo getDibujo(){

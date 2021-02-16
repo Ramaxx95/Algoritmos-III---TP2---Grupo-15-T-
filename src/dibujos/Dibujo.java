@@ -3,26 +3,28 @@ package dibujos;
 import java.util.ArrayList;
 
 import algoritmo.Posicion;
-import bloques.Bloques;
+import algoritmo.Personaje;
 
 public class Dibujo {
 	
-	private ArrayList<Posicion> Posiciones;
+	private ArrayList<Posicion> posiciones_tablero;
 	
 	public Dibujo(){
 		Posiciones = new ArrayList<>();
 	}
 	
-	public void DibujarEn(Posicion posicion) {
-		Posiciones.add(posicion);
+	public void DibujarEn(Posicion posicion, Personaje personaje) {
+		if(personaje.puedeEscribir()) {
+            		posiciones_tablero.add(posicion);
+       		}
 	}
 	
 	public boolean estaEnBlanco() {
-		return Posiciones.isEmpty();
+		return posiciones_tablero.isEmpty();
 	}
 
 	public boolean EsIgualA(Dibujo otroDibujo) {
-		return Posiciones.equals(otroDibujo.Posiciones);
+		return posiciones_tablero.equals(otroDibujo.posiciones_tablero);
 	}
 	
 

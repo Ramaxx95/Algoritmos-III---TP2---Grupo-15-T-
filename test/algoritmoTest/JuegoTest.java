@@ -1,22 +1,9 @@
 package algoritmoTest;
 
-import junit.framework.Assert;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 import algoritmo.*;
-import bloques.BajarLapiz;
-import bloques.MoverAbajo;
-import bloques.MoverArriba;
-import bloques.MoverDerecha;
-import bloques.MoverIzquierda;
-import bloques.Repeticion;
-import bloques.RepetirDosVeces;
-import bloques.RepetirTresVeces;
+import bloques.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class JuegoTest {
 
@@ -109,6 +96,39 @@ public class JuegoTest {
         juego_prueba.ejecutarAlgoritmo();
 
         assertTrue(juego_prueba.personajePuedeEscribir());
+    }
+    
+    @Test
+    public void test07UsarMasDeUnBloqueDentroDeUnoDeRepeticion(){
+
+        Juego juego_prueba = new Juego();
+        MoverArriba bloque_mover_arriba = new MoverArriba();
+        MoverDerecha bloque_mover_derecha = new MoverDerecha();
+        Repeticion bloque_repeticion = new RepetirDosVeces();
+
+        bloque_repeticion.agregarBloque(bloque_mover_arriba);
+        bloque_repeticion.agregarBloque(bloque_mover_derecha);
+        juego_prueba.agregarBloque(bloque_repeticion);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(7, juego_prueba.posicionActual().getFila());
+        assertEquals(7, juego_prueba.posicionActual().getColumna());
+    }
+    
+    @Test
+    public void test08UsarUnBloqueDeRepeticionVacioNoAlteraElAlgoritmo(){
+
+        Juego juego_prueba = new Juego();
+        MoverDerecha bloque_mover_derecha = new MoverDerecha();
+        Repeticion bloque_repeticion = new RepetirDosVeces();
+
+        juego_prueba.agregarBloque(bloque_repeticion);
+        juego_prueba.agregarBloque(bloque_mover_derecha);
+        juego_prueba.agregarBloque(bloque_repeticion);
+        juego_prueba.agregarBloque(bloque_mover_derecha);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(7, juego_prueba.posicionActual().getColumna());
     }
     
 }

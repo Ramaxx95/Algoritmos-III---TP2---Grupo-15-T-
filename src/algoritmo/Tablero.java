@@ -1,7 +1,7 @@
 package algoritmo;
 
 import bloques.Bloques;
-import dibujos.Dibujo;
+import dibujos.SectorDibujo;
 
 public class Tablero {
 
@@ -21,5 +21,9 @@ public class Tablero {
 
     public void agregarBloqueAlAlgoritmo(Bloques un_bloque){
         this.sector_algoritmo.agregarBloque(un_bloque);
+    }
+    
+    public boolean dibujoVacio(){
+        return this.sector_dibujo.getDibujo().estaEnBlanco();
     }
 }

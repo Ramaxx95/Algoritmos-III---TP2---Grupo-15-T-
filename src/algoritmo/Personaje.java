@@ -1,6 +1,5 @@
 package algoritmo;
 
-import java.util.ArrayList;
 
 public class Personaje {
 
@@ -22,11 +21,6 @@ public class Personaje {
     }
 
     public Posicion getPosicion(){
-    	/*
-        ArrayList<Integer> posicion = new ArrayList<>(2);
-        posicion.add(this.posicion.getColumna());
-        posicion.add(this.posicion.getFila());   //posicion = (x,y)
-        */
         return posicion;
     }
 

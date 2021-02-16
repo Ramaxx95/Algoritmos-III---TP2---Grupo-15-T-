@@ -3,6 +3,7 @@ package algoritmo;
 import java.util.ArrayList;
 
 import bloques.Bloques;
+import dibujos.Dibujo;
 
 public class Algoritmo {
 

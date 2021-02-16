@@ -1,16 +1,15 @@
 package bloques;
 
 import algoritmo.Personaje;
+import dibujos.Dibujo;
 
 public class RepetirTresVeces extends Repeticion{
 
     @Override
-    public void repetirBloque(Personaje un_personaje) {
+    public void repetirBloque(Personaje un_personaje, Dibujo un_dibujo) {
 
         for (int i = 0; i < 3; i++){
-
-        	//bloques.forEach(bloques -> bloques.ejecutarBloque(un_personaje));
-        	bloque.ejecutarBloque(un_personaje);
+        	bloques.forEach(bloques -> bloques.ejecutarBloque(un_personaje, un_dibujo));
         }
 
     }

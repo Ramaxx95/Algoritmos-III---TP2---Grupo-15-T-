@@ -22,6 +22,10 @@ public class Dibujo {
 	public boolean estaEnBlanco() {
 		return posiciones_tablero.isEmpty();
 	}
+	
+	public void borrar(){
+        	this.posiciones_tablero.clear();
+    	}
 
 	public boolean EsIgualA(Dibujo otroDibujo) {
 		return posiciones_tablero.equals(otroDibujo.posiciones_tablero);

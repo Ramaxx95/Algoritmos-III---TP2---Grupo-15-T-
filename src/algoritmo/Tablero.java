@@ -26,4 +26,10 @@ public class Tablero {
     public boolean dibujoVacio(){
         return this.sector_dibujo.getDibujo().estaEnBlanco();
     }
+    
+    public void reiniciarAlgoritmo(){
+        this.sector_algoritmo.borrarBloques();
+        this.sector_dibujo.borrarDibujo();
+    }
+    
 }

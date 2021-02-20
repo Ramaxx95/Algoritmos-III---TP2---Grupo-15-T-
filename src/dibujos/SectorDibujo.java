@@ -11,6 +11,9 @@ public class SectorDibujo{
 		dibujo = new Dibujo();
 	}
 	
+	public void borrarDibujo(){
+        	this.dibujo.borrar();
+    	}
 
 	public boolean PuedeDibujar() {
 		return this.dibujo.estaEnBlanco();

@@ -21,6 +21,10 @@ public class Juego {
     public Posicion posicionActual(){
         return this.personaje.getPosicion();
     }
+    
+    public boolean tableroVacio(){
+        return this.tablero.dibujoVacio();
+    }
 
     public boolean personajePuedeEscribir(){
         return this.personaje.puedeEscribir();
@@ -30,4 +34,9 @@ public class Juego {
         this.tablero.ejecutarAlgoritmoCon(this.personaje);
     }
 
+    public void reiniciar(){
+        this.tablero.reiniciarAlgoritmo();
+        this.personaje.resetearPosicion();
+    }
+    
 }

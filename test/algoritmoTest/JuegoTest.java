@@ -131,4 +131,21 @@ public class JuegoTest {
         assertEquals(7, juego_prueba.posicionActual().getColumna());
     }
     
+    @Test
+    public void test09ReiniciarElAlgoritmoBorraTodosLosBloquesQueTeniaAnteriormenteYQuedaVacio(){
+
+        Juego juego_prueba = new Juego();
+        MoverDerecha bloque_mover_derecha = new MoverDerecha();
+        BajarLapiz bloque_bajar_lapiz = new BajarLapiz();
+
+        juego_prueba.agregarBloque(bloque_bajar_lapiz);
+        juego_prueba.agregarBloque(bloque_mover_derecha);
+        juego_prueba.ejecutarAlgoritmo();   //personaje estaria en posicion (6,5)
+        juego_prueba.reiniciar();
+
+        assertEquals(5, juego_prueba.posicionActual().getColumna());
+        assertEquals(5, juego_prueba.posicionActual().getFila());
+        assertTrue(juego_prueba.tableroVacio());
+    }
+    
 }

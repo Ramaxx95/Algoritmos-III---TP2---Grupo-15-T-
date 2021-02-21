@@ -2,6 +2,7 @@ package algoritmoTest;
 
 import algoritmo.*;
 import bloques.*;
+import excepciones.NoHayAlgoritmoGuardadoException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -132,7 +133,26 @@ public class JuegoTest {
     }
     
     @Test
-    public void test09ReiniciarElAlgoritmoBorraTodosLosBloquesQueTeniaAnteriormenteYQuedaVacio(){
+    public void test09GuardarUnAlgoritmoPersonalizado() throws NoHayAlgoritmoGuardadoException {
+
+        Juego juego_prueba = new Juego();
+        MoverDerecha bloque_mover_derecha = new MoverDerecha();
+
+        juego_prueba.agregarBloque(bloque_mover_derecha);
+        juego_prueba.agregarBloque(bloque_mover_derecha);
+        juego_prueba.guardarAlgoritmo();
+
+        AlgoritmoPersonalizado bloque_algo = new AlgoritmoPersonalizado(juego_prueba.pasarAlgoritmo());
+
+        juego_prueba.agregarBloque(bloque_algo); //agrega 2 bloques mas de moverse a la derecha
+
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(9, juego_prueba.posicionActual().getColumna());
+    }
+    
+    @Test
+    public void test10ReiniciarElAlgoritmoBorraTodosLosBloquesQueTeniaAnteriormenteYQuedaVacio(){
 
         Juego juego_prueba = new Juego();
         MoverDerecha bloque_mover_derecha = new MoverDerecha();
@@ -146,6 +166,25 @@ public class JuegoTest {
         assertEquals(5, juego_prueba.posicionActual().getColumna());
         assertEquals(5, juego_prueba.posicionActual().getFila());
         assertTrue(juego_prueba.tableroVacio());
-    }
+   }
+    
+   @Test
+   public void test11AlgoritmoPersonalizadoQuedaGuardadoDespuesDeReiniciarElAlgoritmo() throws NoHayAlgoritmoGuardadoException {
+
+        Juego juego_prueba = new Juego();
+        MoverDerecha bloque_mover_derecha = new MoverDerecha();
+
+        juego_prueba.agregarBloque(bloque_mover_derecha);
+        juego_prueba.agregarBloque(bloque_mover_derecha);
+        juego_prueba.guardarAlgoritmo();
+        AlgoritmoPersonalizado bloque_algo = new AlgoritmoPersonalizado(juego_prueba.pasarAlgoritmo());
+
+        juego_prueba.reiniciar();
+        juego_prueba.agregarBloque(bloque_algo);
+
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(7, juego_prueba.posicionActual().getColumna());
+   }
     
 }

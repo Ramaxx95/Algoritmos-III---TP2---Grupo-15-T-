@@ -29,6 +29,14 @@ public class Juego {
     public boolean personajePuedeEscribir(){
         return this.personaje.puedeEscribir();
     }
+    
+    public void guardarAlgoritmo(){
+        this.tablero.guardarAlgoritmoActual();
+    }
+
+    public Algoritmo pasarAlgoritmo(){
+        return this.tablero.darAlgoritmo();
+    }
 
     public void ejecutarAlgoritmo(){
         this.tablero.ejecutarAlgoritmoCon(this.personaje);

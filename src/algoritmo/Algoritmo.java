@@ -12,6 +12,10 @@ public class Algoritmo {
     public Algoritmo(){
         this.listaAlgoritmo = new ArrayList<>();
     }
+    
+    public ArrayList<Bloques> getAlgoritmo(){
+        return this.listaAlgoritmo;
+    }
 
     public void agregarBloque(Bloques un_bloque){
         this.listaAlgoritmo.add(un_bloque);

@@ -10,4 +10,10 @@ public class MoverIzquierda extends Movimiento{
         un_personaje.moverseA(-1, 0);
     }
 
+	@Override
+	public String ubicacion() {
+		// TODO Esbozo de método generado automáticamente
+		return "Mover izquierda";
+	}
+
 }

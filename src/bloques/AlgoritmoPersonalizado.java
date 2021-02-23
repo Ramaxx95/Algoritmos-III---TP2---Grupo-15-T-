@@ -23,4 +23,9 @@ public class AlgoritmoPersonalizado implements Bloques{
     public void ejecutarBloque(Personaje un_personaje, Dibujo un_dibujo) {
         this.algoritmo.forEach(bloques -> bloques.ejecutarBloque(un_personaje, un_dibujo));
     }
+
+	@Override
+	public String ubicacion() {
+		return "personalizado";
+	}
 }

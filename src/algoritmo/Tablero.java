@@ -1,6 +1,8 @@
 package algoritmo;
 
 import bloques.Bloques;
+import bloques.SectorBloques;
+import dibujos.Dibujo;
 import dibujos.SectorDibujo;
 
 import java.util.ArrayList;
@@ -33,7 +35,11 @@ public class Tablero {
     
     public void reiniciarAlgoritmo(){
         this.sector_algoritmo.borrarBloques();
-        this.sector_dibujo.borrarDibujo();
+        this.borrarDibujo();
+    }
+    
+    public void borrarDibujo() {
+    	this.sector_dibujo.borrarDibujo();
     }
     
     public void guardarAlgoritmoActual(){
@@ -44,5 +50,14 @@ public class Tablero {
     public Algoritmo darAlgoritmo(){
         return this.sector_algoritmo;
     }
+
+	public void seleccionarBloqueAlAlgoritmo(int unaPosicion) {
+		Bloques unBloque = sector_bloques.seleccionarBloque(unaPosicion);
+		this.agregarBloqueAlAlgoritmo(unBloque);
+	}
+
+	public Dibujo mostrarDibujo() {
+		return sector_dibujo.getDibujo();
+	}
     
 }

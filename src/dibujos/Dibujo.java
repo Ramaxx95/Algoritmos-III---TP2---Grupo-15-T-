@@ -10,13 +10,14 @@ public class Dibujo {
 	private ArrayList<Posicion> posiciones_tablero;
 	
 	public Dibujo(){
-		Posiciones = new ArrayList<>();
+		posiciones_tablero = new ArrayList<>();
 	}
 	
 	public void DibujarEn(Posicion posicion, Personaje personaje) {
 		if(personaje.puedeEscribir()) {
-            		posiciones_tablero.add(posicion);
-       		}
+			Posicion posAux = new Posicion(posicion.getColumna(),posicion.getFila());
+            posiciones_tablero.add(posAux);
+       }
 	}
 	
 	public boolean estaEnBlanco() {
@@ -27,8 +28,12 @@ public class Dibujo {
         	this.posiciones_tablero.clear();
     	}
 
-	public boolean EsIgualA(Dibujo otroDibujo) {
+	public boolean EsIgualA(Dibujo otroDibujo) {		
 		return posiciones_tablero.equals(otroDibujo.posiciones_tablero);
+	}
+
+	public ArrayList<Posicion> getDibujado() {
+		return posiciones_tablero;
 	}
 	
 

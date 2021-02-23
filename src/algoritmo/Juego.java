@@ -3,6 +3,7 @@ package algoritmo;
 import java.util.ArrayList;
 
 import bloques.Bloques;
+import dibujos.Dibujo;
 
 public class Juego {
 
@@ -16,6 +17,10 @@ public class Juego {
 
     public void agregarBloque(Bloques un_bloque){
         this.tablero.agregarBloqueAlAlgoritmo(un_bloque);
+    }
+    
+    public void seleccionarBloque(int unaPosicion){
+        this.tablero.seleccionarBloqueAlAlgoritmo(unaPosicion);
     }
 
     public Posicion posicionActual(){
@@ -47,4 +52,17 @@ public class Juego {
         this.personaje.resetearPosicion();
     }
     
+    public Dibujo mostrarDibujo() {
+    	return tablero.mostrarDibujo();
+    }
+
+	public Personaje getPersonaje() {
+		// TODO Esbozo de método generado automáticamente
+		return personaje;
+	}
+
+	public void borrarDibujo() {
+		this.personaje.resetearPosicion();
+		this.tablero.borrarDibujo();
+	}
 }

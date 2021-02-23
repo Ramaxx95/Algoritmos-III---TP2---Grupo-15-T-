@@ -10,4 +10,10 @@ public class SubirLapiz extends Escritura{
         un_personaje.levantarLapiz();
     }
 
+	@Override
+	public String ubicacion() {
+		// TODO Esbozo de método generado automáticamente
+		return "Subir lapiz";
+	}
+
 }

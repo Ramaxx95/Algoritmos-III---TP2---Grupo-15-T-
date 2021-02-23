@@ -1,6 +1,6 @@
 package bloques;
 
-import algoritmo.Movimiento;
+import dibujos.Dibujo;
 import algoritmo.Personaje;
 
 public class MoverIzquierda extends Movimiento{
@@ -9,10 +9,16 @@ public class MoverIzquierda extends Movimiento{
     public void moverPersonaje(Personaje un_personaje) {
         un_personaje.moverseA(-1, 0);
     }
+	
+    @Override
+    public void ejecutarBloqueInvertido(Personaje un_personaje, Dibujo un_dibujo) {
+        MoverDerecha bloque_invertido = new MoverDerecha();
+        bloque_invertido.ejecutarBloque(un_personaje, un_dibujo);
+    }
 
 	@Override
 	public String ubicacion() {
-		// TODO Esbozo de mÈtodo generado autom·ticamente
+		// TODO Esbozo de m√©todo generado autom√°ticamente
 		return "Mover izquierda";
 	}
 

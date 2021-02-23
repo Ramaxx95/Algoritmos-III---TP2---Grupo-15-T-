@@ -16,10 +16,16 @@ public class BajarLapiz extends Escritura{
     public void moverLapiz(Personaje un_personaje) {
         un_personaje.bajarLapiz();
     }
+	
+    @Override
+    public void ejecutarBloqueInvertido(Personaje un_personaje, Dibujo un_dibujo) {
+        SubirLapiz bloque_invertido = new SubirLapiz();
+        bloque_invertido.ejecutarBloque(un_personaje, un_dibujo);
+    }
 
 	@Override
 	public String ubicacion() {
-		// TODO Esbozo de mÈtodo generado autom·ticamente
+		// TODO Esbozo de m√©todo generado autom√°ticamente
 		return "bajar lapiz";
 	}
 

@@ -187,4 +187,174 @@ public class JuegoTest {
         assertEquals(7, juego_prueba.posicionActual().getColumna());
    }
     
+    @Test
+    public void test12InvertirUnBloqueDeMoverseALaDerechaHaceQueElPersonajeSeMuevaALaIzquierda(){
+
+        Juego juego_prueba = new Juego();
+        MoverDerecha bloque_mover_derecha = new MoverDerecha();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+
+        bloque_invertir.agregarBloque(bloque_mover_derecha);
+        juego_prueba.agregarBloque(bloque_invertir);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(4, juego_prueba.posicionActual().getColumna());
+    }
+
+    @Test
+    public void test13InvertirUnBloqueDeMoverseALaIzquierdaHaceQueElPersonajeSeMuevaALaDerecha(){
+
+        Juego juego_prueba = new Juego();
+        MoverIzquierda bloque_mover_izquierda = new MoverIzquierda();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+
+        bloque_invertir.agregarBloque(bloque_mover_izquierda);
+        juego_prueba.agregarBloque(bloque_invertir);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(6, juego_prueba.posicionActual().getColumna());
+    }
+
+    @Test
+    public void test14InvertirUnBloqueDeMoverseHaciaAbajoHaceQueElPersonajeSeMuevaHaciaArriba(){
+
+        Juego juego_prueba = new Juego();
+        MoverAbajo bloque_mover_abajo = new MoverAbajo();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+
+        bloque_invertir.agregarBloque(bloque_mover_abajo);
+        juego_prueba.agregarBloque(bloque_invertir);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(6, juego_prueba.posicionActual().getFila());
+    }
+
+    @Test
+    public void test15InvertirUnBloqueDeMoverseHaciaArribaHaceQueElPersonajeSeMuevaHaciaAbajo(){
+
+        Juego juego_prueba = new Juego();
+        MoverArriba bloque_mover_arriba = new MoverArriba();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+
+        bloque_invertir.agregarBloque(bloque_mover_arriba);
+        juego_prueba.agregarBloque(bloque_invertir);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(4, juego_prueba.posicionActual().getFila());
+    }
+
+    @Test
+    public void test16InvertirUnBloqueDeBajarElLapizHaceQueElPersonajeLoSuba(){
+
+        Juego juego_prueba = new Juego();
+        BajarLapiz bloque_bajar_lapiz = new BajarLapiz();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+
+        bloque_invertir.agregarBloque(bloque_bajar_lapiz);
+        juego_prueba.agregarBloque(bloque_invertir);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertFalse(juego_prueba.personajePuedeEscribir());
+    }
+
+    @Test
+    public void test17InvertirUnBloqueDeSubirElLapizHaceQueElPersonajeLoBaje(){
+
+        Juego juego_prueba = new Juego();
+        SubirLapiz bloque_subir_lapiz = new SubirLapiz();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+
+        bloque_invertir.agregarBloque(bloque_subir_lapiz);
+        juego_prueba.agregarBloque(bloque_invertir);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertTrue(juego_prueba.personajePuedeEscribir());
+    }
+
+    @Test
+    public void test18InvertirUnBloqueDeRepetirDosVecesALaDerecha(){
+
+        Juego juego_prueba = new Juego();
+        MoverDerecha bloque_mover_derecha = new MoverDerecha();
+        RepetirDosVeces bloque_repeticion = new RepetirDosVeces();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+
+        bloque_repeticion.agregarBloque(bloque_mover_derecha);
+        bloque_invertir.agregarBloque(bloque_repeticion);
+        juego_prueba.agregarBloque(bloque_invertir);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(3, juego_prueba.posicionActual().getColumna());
+    }
+
+    @Test
+    public void test19InvertirUnBloqueDeRepetirTresVecesHaciaAbajo(){
+
+        Juego juego_prueba = new Juego();
+        MoverAbajo bloque_mover_abajo = new MoverAbajo();
+        RepetirTresVeces bloque_repeticion = new RepetirTresVeces();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+
+        bloque_repeticion.agregarBloque(bloque_mover_abajo);
+        bloque_invertir.agregarBloque(bloque_repeticion);
+        juego_prueba.agregarBloque(bloque_invertir);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(8, juego_prueba.posicionActual().getFila());
+    }
+
+    @Test
+    public void test20InvertirUnBloqueDeAlgoritmoPersonalizadoInvierteLosBloquesDentroDeEseAlgoritmo() throws NoHayAlgoritmoGuardadoException{
+
+        Juego juego_prueba = new Juego();
+        MoverAbajo bloque_mover_abajo = new MoverAbajo();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+
+        juego_prueba.agregarBloque(bloque_mover_abajo);
+        juego_prueba.agregarBloque(bloque_mover_abajo);
+        AlgoritmoPersonalizado bloque_algoritmo = new AlgoritmoPersonalizado(juego_prueba.pasarAlgoritmo());
+        juego_prueba.guardarAlgoritmo();
+        juego_prueba.reiniciar();
+
+        bloque_invertir.agregarBloque(bloque_algoritmo);
+        juego_prueba.agregarBloque(bloque_invertir);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(7, juego_prueba.posicionActual().getFila());
+    }
+
+    @Test
+    public void test21InvertirDosVecesUnBloqueDeMoverseALaDerechaAnulaLaInversionDeSuComportamiento(){
+
+        Juego juego_prueba = new Juego();
+        MoverDerecha bloque_mover_derecha = new MoverDerecha();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+        InvertirComportamiento bloque_invertir_2 = new InvertirComportamiento();
+
+        bloque_invertir.agregarBloque(bloque_mover_derecha);
+        bloque_invertir_2.agregarBloque(bloque_invertir);
+        juego_prueba.agregarBloque(bloque_invertir_2);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(6, juego_prueba.posicionActual().getColumna()); //se movio a la derecha
+    }
+
+    @Test
+    public void test22InvertirTresVecesUnBloqueDeMoverseALaDerechaHaceQueSeMuevaUnaPosicionALaIzquierda(){
+
+        Juego juego_prueba = new Juego();
+        MoverDerecha bloque_mover_derecha = new MoverDerecha();
+        InvertirComportamiento bloque_invertir = new InvertirComportamiento();
+        InvertirComportamiento bloque_invertir_2 = new InvertirComportamiento();
+        InvertirComportamiento bloque_invertir_3 = new InvertirComportamiento();
+
+        bloque_invertir.agregarBloque(bloque_mover_derecha);
+        bloque_invertir_2.agregarBloque(bloque_invertir);
+        bloque_invertir_3.agregarBloque(bloque_invertir_2);
+        juego_prueba.agregarBloque(bloque_invertir_3);
+        juego_prueba.ejecutarAlgoritmo();
+
+        assertEquals(4, juego_prueba.posicionActual().getColumna()); //se movio a la derecha
+    }
+    
 }

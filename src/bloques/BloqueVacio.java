@@ -14,4 +14,10 @@ public class BloqueVacio implements Bloques{
 		// TODO Esbozo de método generado automáticamente
 		return "vacio";
 	}
+
+	@Override
+	public void ejecutarBloqueInvertido(Personaje un_personaje, Dibujo un_dibujo) {
+		// TODO Esbozo de método generado automáticamente
+		
+	}
 }

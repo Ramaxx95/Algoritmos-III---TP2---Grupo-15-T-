@@ -26,4 +26,10 @@ public class InvertirComportamiento implements Bloques{
     public void ejecutarBloqueInvertido(Personaje un_personaje, Dibujo un_dibujo) {
         this.bloques.forEach(bloque -> bloque.ejecutarBloque(un_personaje, un_dibujo));
     }
+
+	@Override
+	public String ubicacion() {
+		// TODO Esbozo de método generado automáticamente
+		return "invertir";
+	}
 }

@@ -1,4 +1,4 @@
-package main_test;
+package algoritmoTest;
 
 import algoritmo.Algoritmo;
 import algoritmo.Personaje;

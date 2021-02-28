@@ -81,11 +81,11 @@ public class DibujoTest {
     	public void test05PersonajeSeMueveConLapizAbajoYCreaDibujo(){
 		Tablero tablero_prueba = new Tablero();
 		Personaje personaje_prueba = new Personaje();
-		Bloques bajar_lapiz = new BajarLapiz();
-       		Bloques mover_derecha = new MoverDerecha();
+		Bloque bajar_lapiz = new BajarLapiz();
+       	Bloque mover_derecha = new MoverDerecha();
 
-        	tablero_prueba.agregarBloqueAlAlgoritmo(bajar_lapiz);
-        	tablero_prueba.agregarBloqueAlAlgoritmo(mover_derecha);
+        tablero_prueba.agregarBloqueAlAlgoritmo(bajar_lapiz);
+        tablero_prueba.agregarBloqueAlAlgoritmo(mover_derecha);
 		tablero_prueba.ejecutarAlgoritmoCon(personaje_prueba);
 		
 		assertFalse(tablero_prueba.dibujoVacio());
@@ -95,7 +95,7 @@ public class DibujoTest {
    	 public void test06PersonajeSeMueveConLapizArribaYNoCreaDibujo(){
 		Tablero tablero_prueba = new Tablero();
 		Personaje personaje_prueba = new Personaje();
-		 Bloques mover_derecha = new MoverDerecha();
+		 Bloque mover_derecha = new MoverDerecha();
 
 		tablero_prueba.agregarBloqueAlAlgoritmo(mover_derecha);
 		tablero_prueba.ejecutarAlgoritmoCon(personaje_prueba);

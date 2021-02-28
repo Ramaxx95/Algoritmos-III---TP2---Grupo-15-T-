@@ -13,7 +13,7 @@ public class SectorDibujoTest {
 	@Test
 	public void test01SectorDibujoSeCreoYpuedeDibujar(){
 		SectorDibujo sectorDi = new SectorDibujo();
-		Assert.assertTrue(sectorDi.PuedeDibujar() );
+		assertTrue(sectorDi.PuedeDibujar() );
 	}
 	
 	
@@ -31,7 +31,7 @@ public class SectorDibujoTest {
 		
 		
 		Dibujo dibujo = new Dibujo();
-		dibujo.DibujarEn(posicion_1), personaje);
+		dibujo.DibujarEn(posicion_1, personaje);
 		dibujo.DibujarEn(posicion_2, personaje);
 		Dibujo otroDibujo = sectorDi.getDibujo();
 		

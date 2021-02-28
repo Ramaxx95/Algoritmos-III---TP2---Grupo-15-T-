@@ -45,7 +45,7 @@ public class RepetirDosVecesTest {
 		Posicion posicionDelPersonaje = personaje.getPosicion();
 		Posicion posicionEsperada = new Posicion(5,7);
 		
-		Boolean iguales = posicionDelPersonaje.sonIguales(posicionEsperda);
+		Boolean iguales = posicionDelPersonaje.sonIguales(posicionEsperada);
 		
 		
 		assertTrue(iguales);

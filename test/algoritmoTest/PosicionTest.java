@@ -1,4 +1,4 @@
-package main_test;
+package algoritmoTest;
 
 import algoritmo.Posicion;
 import org.junit.jupiter.api.Test;

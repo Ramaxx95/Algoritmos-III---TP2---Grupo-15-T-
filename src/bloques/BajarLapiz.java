@@ -1,5 +1,6 @@
 package bloques;
 
+
 import algoritmo.Personaje;
 import dibujos.Dibujo;
 
@@ -22,10 +23,5 @@ public class BajarLapiz extends Escritura{
         bloque_invertido.ejecutarBloque(un_personaje, un_dibujo);
     }
 
-	@Override
-	public String ubicacion() {
-		// TODO Esbozo de método generado automáticamente
-		return "bajar lapiz";
-	}
 
 }

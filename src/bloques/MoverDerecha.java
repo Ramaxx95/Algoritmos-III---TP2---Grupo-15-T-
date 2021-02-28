@@ -16,10 +16,5 @@ public class MoverDerecha extends Movimiento{
         bloque_invertido.ejecutarBloque(un_personaje, un_dibujo);
     }
 
-	@Override
-	public String ubicacion() {
-		// TODO Esbozo de método generado automáticamente
-		return "Mover derecha";
-	}
 
 }

@@ -7,11 +7,11 @@ import algoritmo.*;
 
 public class SectorBloques{
     
-    private static ArrayList<Bloques> bloques;
+    private static ArrayList<Bloque> bloques;
 
     public SectorBloques(){
         //this.bloques = new ArrayList<>();
-    	bloques = new ArrayList<Bloques>(Arrays.asList( 
+    	bloques = new ArrayList<Bloque>(Arrays.asList( 
     			new MoverArriba(),//0
     			new MoverAbajo(),
     			new MoverDerecha(),
@@ -24,7 +24,7 @@ public class SectorBloques{
     			);
     }
 
-    public Bloques seleccionarBloque(int posicion){
+    public Bloque seleccionarBloque(int posicion){
         return bloques.get(posicion);
     }
 }

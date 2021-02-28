@@ -2,22 +2,22 @@ package algoritmo;
 
 import java.util.ArrayList;
 
-import bloques.Bloques;
+import bloques.Bloque;
 import dibujos.Dibujo;
 
 public class Algoritmo {
 
-    private ArrayList<Bloques> listaAlgoritmo;
+    private ArrayList<Bloque> listaAlgoritmo;
 
     public Algoritmo(){
         this.listaAlgoritmo = new ArrayList<>();
     }
     
-    public ArrayList<Bloques> getAlgoritmo(){
+    public ArrayList<Bloque> getAlgoritmo(){
         return this.listaAlgoritmo;
     }
 
-    public void agregarBloque(Bloques un_bloque){
+    public void agregarBloque(Bloque un_bloque){
         this.listaAlgoritmo.add(un_bloque);
     }
     

@@ -5,21 +5,21 @@ import dibujos.Dibujo;
 
 import java.util.ArrayList;
 
-public abstract class Repeticion implements Bloques {
+public abstract class Repeticion extends Contenedor {
 
-    protected ArrayList<Bloques> bloques;
+    protected ArrayList<Bloque> bloques;
 
     public Repeticion(){
         this.bloques = new ArrayList<>();
     }
 
-    public void agregarBloque(Bloques un_bloque){
-        this.bloques.add(un_bloque);
-    }
-
     @Override
     public void ejecutarBloque(Personaje un_personaje, Dibujo un_dibujo) {
         this.repetirBloque(un_personaje, un_dibujo);
+    }
+    
+    public void agregarBloque(Bloque un_bloque){
+        this.bloques.add(un_bloque);
     }
 
     public abstract void repetirBloque(Personaje un_personaje, Dibujo un_dibujo);

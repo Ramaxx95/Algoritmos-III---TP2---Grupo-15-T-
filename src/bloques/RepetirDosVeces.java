@@ -26,10 +26,4 @@ public class RepetirDosVeces extends Repeticion{
         }
     }
 
-	@Override
-	public String ubicacion() {
-		// TODO Esbozo de método generado automáticamente
-		return "repetir dos veces";
-	}
-
 }

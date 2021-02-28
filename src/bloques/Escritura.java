@@ -3,7 +3,7 @@ package bloques;
 import algoritmo.Personaje;
 import dibujos.Dibujo;
 
-public abstract class Escritura implements Bloques {
+public abstract class Escritura implements Bloque {
 
     @Override
     public void ejecutarBloque(Personaje un_personaje, Dibujo un_dibujo) {

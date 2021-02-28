@@ -6,9 +6,9 @@ import dibujos.Dibujo;
 import excepciones.*;
 import java.util.ArrayList;
 
-public class AlgoritmoPersonalizado implements Bloques{
+public class AlgoritmoPersonalizado implements Bloque{
 
-    private ArrayList<Bloques> algoritmo;
+    private ArrayList<Bloque> algoritmo;
 
     public AlgoritmoPersonalizado(Algoritmo algoritmoAGuardar) throws NoHayAlgoritmoGuardadoException{
         this.algoritmo = new ArrayList<>();
@@ -28,9 +28,4 @@ public class AlgoritmoPersonalizado implements Bloques{
     public void ejecutarBloqueInvertido(Personaje un_personaje, Dibujo un_dibujo) {
         this.algoritmo.forEach(bloque -> bloque.ejecutarBloqueInvertido(un_personaje, un_dibujo));
     }
-
-	@Override
-	public String ubicacion() {
-		return "personalizado";
-	}
 }

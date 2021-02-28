@@ -1,7 +1,7 @@
 package creadores;
 
-import bloques.Bloques;
+import bloques.Bloque;
 
 public interface CreadorDeBloques{
-	public Bloques crearBloque();
+	public Bloque crearBloque();
 }

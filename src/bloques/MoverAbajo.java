@@ -16,10 +16,5 @@ public class MoverAbajo extends Movimiento{
         bloque_invertido.ejecutarBloque(un_personaje, un_dibujo);
     }
 
-	@Override
-	public String ubicacion() {
-		// TODO Esbozo de método generado automáticamente
-		return "mover abajo";
-	}
 
 }

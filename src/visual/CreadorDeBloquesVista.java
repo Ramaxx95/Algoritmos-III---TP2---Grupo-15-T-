@@ -25,10 +25,14 @@ public class CreadorDeBloquesVista {
 	
 	public void cargarBoxBloques(Text textoBloques) {
 		HBox HboxBLoque = new HBox();
+		Button finalizar = new Button("finalizar");
+		finalizar.setOnAction(e -> { 
+			controladorDeJuego.finalizarContenedor(); });
+		
 		
 		Button subir = new Button("Subir");
 		subir.setOnAction(e -> { 
-			controladorDeJuego.añadirBloque( new CreadorDeMoverArriba(),ControladorDeBloques.moverArriba ); });
+			controladorDeJuego.añadirBloque( new CreadorDeMoverArriba(),ControladorDeBloques.moverArriba); });
 		
 		Button bajar = new Button("Bajar");
 		bajar.setOnAction(e -> { 
@@ -52,14 +56,17 @@ public class CreadorDeBloquesVista {
 		
 		Button repeticionX2 = new Button("Repetir dos veces");
 		repeticionX2.setOnAction(e -> { 
-			controladorDeJuego.añadirBloque( new CreadorDeRepetirDosVeces(),ControladorDeBloques.repetirDosVeces ); });
+			controladorDeJuego.añadirBloqueContenedor( new CreadorDeRepetirDosVeces(),ControladorDeBloques.repetirDosVeces ); });
 
 		Button repeticionX3 = new Button("Repetir tres veces");
 		repeticionX3.setOnAction(e -> { 
-			controladorDeJuego.añadirBloque( new CreadorDeRepetirTresVeces(),ControladorDeBloques.repetirTresVeces ); });
-				
+			controladorDeJuego.añadirBloqueContenedor( new CreadorDeRepetirTresVeces(),ControladorDeBloques.repetirTresVeces ); });
+		
+		HBox box = new HBox();
+		box.getChildren().addAll(textoBloques,finalizar);		
+		
 		HboxBLoque.getChildren().addAll(subir,bajar,derecha,izquierda,subirLapiz,bajarLapiz,repeticionX2,repeticionX3);
-		vBox.getChildren().addAll(textoBloques,HboxBLoque );
+		vBox.getChildren().addAll(box,HboxBLoque );
 	}
 
 	public void setControlador(ControladorDeJuego unControladorDeJuego) {

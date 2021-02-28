@@ -2,6 +2,9 @@ package visual;
 
 import control.ControladorDeJuego;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -10,37 +13,39 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 public class AlgoritmoVista {
+	private ScrollPane scroll;
 	private VBox vbox;
-	ControladorDeJuego controladorDeJuego;
-	GridPane tableroAlgoritmo;
-	int cantidadElementos;
+	private ControladorDeJuego controladorDeJuego;
+	private GridPane tableroAlgoritmo;
+	private int cantidadElementos;
+	private int cantidadElementosAux;
 	
 	public AlgoritmoVista(){
-		vbox = new VBox();
+		scroll = new ScrollPane();
+	    scroll.setPrefSize(595, 200);
+		vbox = new VBox();		
+		scroll.setContent(vbox);
 		Button botonEjecutar = new Button("Ejecutar");
+		Button botonReiniciar = new Button("Reiniciar ");
+		
 		botonEjecutar.setOnAction(e -> { controladorDeJuego.ejecutar(); });
+		botonReiniciar.setOnAction(e -> { controladorDeJuego.reiniciar(); });
 		tableroAlgoritmo = new GridPane();
-		this.cargarBoxAlgoritmo(tableroAlgoritmo, botonEjecutar);
+		this.cargarBoxAlgoritmo(tableroAlgoritmo, botonEjecutar,botonReiniciar);
 		cantidadElementos = 0;
+		cantidadElementosAux = 1;
 	}
 
-	private void cargarBoxAlgoritmo(GridPane tableroAlgoritmo, Button botonEjecutar) {
+	private void cargarBoxAlgoritmo(GridPane tableroAlgoritmo, Button botonEjecutar,Button botonReiniciar ) {
 		
 		HBox boxAlgoritmoHorizontal = new HBox(10);
 		Text textAlgoritmo = new Text("Algoritmo");
-		boxAlgoritmoHorizontal.getChildren().addAll(textAlgoritmo,botonEjecutar);
-		
-		for(int i = 0; i < 10; i++) {
-			for(int j = 0; j < 10; j++) {
-				tableroAlgoritmo.add(new Rectangle(50,50,Color.BEIGE),i,j);
-			}
-		}
-		
+		boxAlgoritmoHorizontal.getChildren().addAll(textAlgoritmo,botonEjecutar,botonReiniciar);
 		vbox.getChildren().addAll(boxAlgoritmoHorizontal,tableroAlgoritmo);
 	}
-
-	public VBox getContenedor() {
-		return vbox;
+	
+	public ScrollPane getContenedor() {
+		return scroll;
 	}
 
 	public void setControlador(ControladorDeJuego unControladorDeJuego) {
@@ -50,6 +55,26 @@ public class AlgoritmoVista {
 	public void agrega(Text textBloqueSubir) {
 		tableroAlgoritmo.add(textBloqueSubir,0,cantidadElementos);
 		cantidadElementos++;
+	}
+	
+	public void agregaImg(Image image) {
+		ImageView img = new ImageView(image);
+		tableroAlgoritmo.add(img ,0,cantidadElementos);
+		cantidadElementos++;
+	}
+
+	public void agregaImgContendor(Image image) {
+		ImageView img = new ImageView(image);
+		tableroAlgoritmo.add(img ,cantidadElementosAux,cantidadElementos -1 );
+		cantidadElementosAux++;
+	}
+	
+	public void finalizarContenedor() {
+		cantidadElementosAux = 1;
+	}
+
+	public void reiniciar() {
+		tableroAlgoritmo.getChildren().clear();
 	}
 	
 }

@@ -24,10 +24,5 @@ public class RepetirTresVeces extends Repeticion{
         }
     }
 
-	@Override
-	public String ubicacion() {
-		// TODO Esbozo de método generado automáticamente
-		return "Repetir tres veces";
-	}
 
 }

@@ -6,7 +6,7 @@ import bloques.*;
 public class CreadorDeMoverDerecha implements CreadorDeBloques{
 
 	@Override
-	public Bloques crearBloque() {
+	public Bloque crearBloque() {
 		return new MoverDerecha();
 	}
 	

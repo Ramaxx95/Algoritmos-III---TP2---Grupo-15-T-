@@ -6,7 +6,7 @@ import bloques.*;
 public class CreadorDeSubirLapiz implements CreadorDeBloques{
 
 	@Override
-	public Bloques crearBloque() {
+	public Bloque crearBloque() {
 		return new SubirLapiz();
 	}
 	

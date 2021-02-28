@@ -2,6 +2,7 @@ package visual;
 
 import algoritmo.Posicion;
 import control.ControladorDeJuego;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -46,7 +47,20 @@ public class JuegoVista {
 	}
 
 	public void agregarImgBloque(String img) {
-		algoritmoVista.agrega(new Text(img));
+		algoritmoVista.agregaImg(new Image(img));
 	}
-
+	
+	public void agregarImgBloqueContenedor(String img) {
+		algoritmoVista.agregaImgContendor(new Image(img));
+	}
+	
+	public void finalizarImgBloqueContenedor() {
+		algoritmoVista.finalizarContenedor();
+	}
+	
+	public void reiniciar() {
+		this.borrarDibujo();
+		this.algoritmoVista.reiniciar();
+	}
+	
 }

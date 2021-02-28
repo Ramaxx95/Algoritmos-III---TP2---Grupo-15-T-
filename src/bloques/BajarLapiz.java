@@ -1,6 +1,5 @@
 package bloques;
 
-import algoritmo.Escritura;
 import algoritmo.Personaje;
 import dibujos.Dibujo;
 

@@ -17,7 +17,7 @@ public class JuegoVista {
 	
 	public JuegoVista(){
 		contenedorPrincipal = new VBox();
-		dibujoVista = new DibujoVista();
+		dibujoVista = new DibujoVista(500,500);
 		algoritmoVista = new AlgoritmoVista();
 		HBox BoxAux = new HBox();
 		BoxAux.getChildren().addAll(dibujoVista.getContenedor(),

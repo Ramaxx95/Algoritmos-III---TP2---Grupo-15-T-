@@ -6,53 +6,61 @@ import control.ControladorDeJuego;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.effect.Lighting;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 public class DibujoVista {
 	
 	private VBox vbox;
-	ControladorDeJuego controladorDeJuego;
-	Circle circulo;
-	GridPane tablero;
+	private ControladorDeJuego controladorDeJuego;
+	private Circle circulo;
+	private AnchorPane anchor;
+	private int ancho;
+	private int alto;
+	private Line linea;
 	
-	public DibujoVista(){
+	public DibujoVista(int unAncho, int unAlto){
 		//configuracion de la vista dibujo
 		vbox = new VBox();
-		circulo = new Circle(15,Color.BLACK);
-		tablero = new GridPane();
+		circulo = new Circle(10,Color.BLACK);
+		anchor  = new AnchorPane();
+		linea = new Line();
+		ancho = unAncho;
+		alto = unAlto;
+        anchor.setPrefSize(ancho, alto);
+        anchor.setMinSize(ancho, alto);
 		Button boton = new Button("Borrar");
 		boton.setOnAction(e -> { controladorDeJuego.borrarDibujo(); });
-		this.cargarBoxDibujo(tablero, boton,vbox);
+		this.cargarBoxDibujo(anchor, boton,vbox);
 		
 	}
 
-	private void cargarBoxDibujo(GridPane tablero, Button boton, VBox vbox2) {
-		this.cargarTableroDibujo(tablero);
+	private void cargarBoxDibujo(AnchorPane anchor, Button boton, VBox vbox2) {
+		this.cargarTableroDibujo(anchor);
 		
 		HBox boxDibujar = new HBox(10);
 		Text textDibujo = new Text("dibujo");
 		boxDibujar.getChildren().addAll(textDibujo,boton);
 		
-		vbox.getChildren().addAll(boxDibujar,tablero);
+		vbox.getChildren().addAll(boxDibujar,anchor);
 		
 	}
 
 
-	private void cargarTableroDibujo(GridPane tablero) {
-		for(int i = 0; i < 11; i++) {
-			for(int j = 0; j < 11; j++) {
-				tablero.add(new Rectangle(50,50,Color.BEIGE),i,j);
-			}
-		}
+	private void cargarTableroDibujo(AnchorPane anchor) {
 		circulo.setEffect(new Lighting());
-		tablero.add(circulo,5,5);
-		GridPane.setHalignment(circulo, HPos.CENTER);
+		anchor.getChildren().add(circulo);
+		AnchorPane.setTopAnchor(circulo, (double) ((ancho/2) -10));
+        AnchorPane.setLeftAnchor(circulo, (double) ((alto/2) -10));
+        linea.setStartX((ancho/2));
+        linea.setStartY(alto/2);
 	}
 
 	public VBox getContenedor() {
@@ -64,28 +72,48 @@ public class DibujoVista {
 	}
 
 	public void moverPersonaje(Posicion posAux) {
-		final Circle circuloAux = new Circle(5,Color.BLUE);
-		GridPane.setHalignment(circuloAux, HPos.CENTER);
+		int filaX = 5 - posAux.getFila();
+		int filaFinal = 5 + filaX;
 		
-		int columna = posAux.getColumna();
-		int fila = posAux.getFila();
-		tablero.add(circuloAux, columna, fila);
-		
-		/*int filaX = 5 - posAux.getColumna();
-		int columnaFinal = 5 + filaX;
-		
-		GridPane.setColumnIndex(circulo, posAux.getFila() );
-		GridPane.setRowIndex(circulo, columnaFinal );*/
+		double finalx = (double) (posAux.getColumna() * 50);
+        double finaly = (double) (filaFinal * 50);
+        Circle circulo2 = new Circle(5,Color.BLUE);
+        anchor.getChildren().addAll(circulo2);
+        AnchorPane.setTopAnchor(circulo2, finaly -5);
+        AnchorPane.setLeftAnchor(circulo2, finalx -5) ;
+        double absolutoX = Math.abs(linea.getStartX() - finalx);
+        double absolutoY = Math.abs(linea.getStartY() - finaly);
+        if( absolutoX+absolutoY   < 100 ) {
+        	linea.setEndX(finalx);
+	        linea.setEndY(finaly);
+	        anchor.getChildren().addAll(linea);
+        }
+        /*
+        if( (Math.abs(linea.getStartX() - finalx) < 100) && (Math.abs(linea.getStartY() - finaly) < 100)   ) {
+        	linea.setEndX(finalx);
+	        linea.setEndY(finaly);
+	        anchor.getChildren().addAll(linea);
+        }
+        */
+	    Line lineaAux = new Line();
+	    lineaAux.setStartX( finalx );
+	    lineaAux.setStartY( finaly);
+	    linea = lineaAux;
 	}
 	
 	public void actualizarPosicion(Personaje un_personaje) {
 		Posicion pos_personaje = un_personaje.getPosicion();
-		GridPane.setColumnIndex(circulo, pos_personaje.getColumna());
-		GridPane.setRowIndex(circulo, pos_personaje.getFila());
+		this.moverPersonaje(pos_personaje);
+		int filaX = 5 - pos_personaje.getFila();
+		int filaFinal = 5 + filaX;
+		AnchorPane.setTopAnchor(circulo, (double) (filaFinal * 50) -10 );
+        AnchorPane.setLeftAnchor(circulo, (double) pos_personaje.getColumna() * 50 -10  );
+		
 	}
 
 	public void resetearTablero() {
-		tablero.getChildren().clear();
-		this.cargarTableroDibujo(tablero);
+		anchor.getChildren().clear();
+		this.cargarTableroDibujo(anchor);
 	}
 }
+

@@ -42,12 +42,12 @@ public class ControladorDeJuego {
 		juegoVista.borrarDibujo();
 	}
 
-	public void aÃ±adirBloque(CreadorDeBloques creadorDeBloques, String img) {
-		controladorDeGuardado.aÃ±adirBloque(creadorDeBloques, img);
+	public void añadirBloque(CreadorDeBloques creadorDeBloques, String img) {
+		controladorDeGuardado.añadirBloque(creadorDeBloques, img);
 	}
 	
-	public void aÃ±adirBloqueContenedor(CreadorDeBloques creadorDeBloques, String img) {
-		controladorDeGuardado.aÃ±adirBloqueContenedor(creadorDeBloques, img);
+	public void añadirBloqueContenedor(CreadorDeBloques creadorDeBloques, String img) {
+		controladorDeGuardado.añadirBloqueContenedor(creadorDeBloques, img);
 		controladorDeGuardado = new ControladorDeGuardadAlternativo(juego,juegoVista);
 	}
 	

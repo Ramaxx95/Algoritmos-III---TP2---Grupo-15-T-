@@ -10,9 +10,20 @@ public class AlgoritmoPersonalizado implements Bloque{
 
     private ArrayList<Bloque> algoritmo;
 
-    public AlgoritmoPersonalizado(Algoritmo algoritmoAGuardar) throws NoHayAlgoritmoGuardadoException{
+    public AlgoritmoPersonalizado(){
+
         this.algoritmo = new ArrayList<>();
 
+    }
+	
+    public AlgoritmoPersonalizado(Algoritmo algoritmoAGuardar) throws NoHayAlgoritmoGuardadoException{
+
+        this.algoritmo = new ArrayList<>();
+        this.agregarAlgoritmo(algoritmoAGuardar);
+
+    }
+	
+    public void agregarAlgoritmo(Algoritmo algoritmoAGuardar) throws NoHayAlgoritmoGuardadoException{
         if (algoritmoAGuardar.getAlgoritmo().size() == 0){
             throw new NoHayAlgoritmoGuardadoException();
         }

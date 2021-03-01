@@ -2,12 +2,13 @@ package bloques_test;
 
 import dibujos.Dibujo;
 import excepciones.NoHayAlgoritmoGuardadoException;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import junit.framework.Assert;
+import static org.junit.Assert.*;
+import org.junit.Test;
 import algoritmo.*;
 import bloques.*;
 
-class AlgoritmoPersonalizadoTest {
+public class AlgoritmoPersonalizadoTest {
 
     @Test
     public void test01TratarDeGuardarUnAlgoritmoCuandoNoSeAgregoNingunBloqueAEsteSaltaError(){

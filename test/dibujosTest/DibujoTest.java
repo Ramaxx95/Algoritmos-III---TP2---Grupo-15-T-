@@ -1,7 +1,13 @@
 package dibujosTest;
 
+/*
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+*/
+import junit.framework.Assert;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 import algoritmo.*;
 import bloques.*;
@@ -52,7 +58,7 @@ public class DibujoTest {
 		
 		assertTrue(dibujo.EsIgualA(otroDibujo));
 	}
-	
+
 	@Test
 	public void test04SeCreaDosDibujosYNoSonIguales(){
 		Dibujo dibujo = new Dibujo();

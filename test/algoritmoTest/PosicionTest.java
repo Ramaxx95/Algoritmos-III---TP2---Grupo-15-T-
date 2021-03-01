@@ -1,10 +1,16 @@
 package algoritmoTest;
 
 import algoritmo.Posicion;
+/*
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+*/
+import junit.framework.Assert;
+import static org.junit.Assert.*;
 
-class PosicionTest {
+import org.junit.Test;
+
+public class PosicionTest {
 
     @Test
     public void test01DosPosicionesDistintasQueTenganLasMismasCoordenadasSonIguales(){
@@ -33,7 +39,6 @@ class PosicionTest {
         Posicion posicion = new Posicion(1, 0);
 
         posicion.moverEnX(1);
-
         assertEquals(2, posicion.getColumna());
     }
 

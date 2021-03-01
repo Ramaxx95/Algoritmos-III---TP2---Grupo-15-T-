@@ -3,8 +3,14 @@ package algoritmoTest;
 import algoritmo.*;
 import bloques.*;
 import excepciones.NoHayAlgoritmoGuardadoException;
+/*
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+*/
+import junit.framework.Assert;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 public class JuegoTest {
 

@@ -5,10 +5,15 @@ import algoritmo.Personaje;
 import bloques.MoverAbajo;
 import bloques.*;
 import dibujos.Dibujo;
+/*
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+*/
+import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
-class AlgortimoTest {
+public class AlgortimoTest {
 
     @Test
     public void test01BorrarLosBloquesDelAlgoritmoQuitaTodosLosBloquesQueSeEncuentranEnElAlgoritmo(){

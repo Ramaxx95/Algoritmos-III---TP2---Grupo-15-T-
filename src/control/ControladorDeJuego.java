@@ -3,6 +3,7 @@ package control;
 import java.util.ArrayList;
 
 import algoritmo.Juego;
+import algoritmo.Personaje;
 import algoritmo.Posicion;
 import bloques.*;
 import creadores.CreadorDeBloques;
@@ -32,6 +33,8 @@ public class ControladorDeJuego {
 			Posicion posAux = posiciones_tablero.get(i);
 			juegoVista.moverPersonaje(posAux);
 		}
+		Personaje personaje = juego.getPersonaje();
+		juegoVista.dibujarPosicionActual(personaje);
 	}
 
 	public void borrarDibujo() {
@@ -39,12 +42,12 @@ public class ControladorDeJuego {
 		juegoVista.borrarDibujo();
 	}
 
-	public void añadirBloque(CreadorDeBloques creadorDeBloques, String img) {
-		controladorDeGuardado.añadirBloque(creadorDeBloques, img);
+	public void aÃ±adirBloque(CreadorDeBloques creadorDeBloques, String img) {
+		controladorDeGuardado.aÃ±adirBloque(creadorDeBloques, img);
 	}
 	
-	public void añadirBloqueContenedor(CreadorDeBloques creadorDeBloques, String img) {
-		controladorDeGuardado.añadirBloqueContenedor(creadorDeBloques, img);
+	public void aÃ±adirBloqueContenedor(CreadorDeBloques creadorDeBloques, String img) {
+		controladorDeGuardado.aÃ±adirBloqueContenedor(creadorDeBloques, img);
 		controladorDeGuardado = new ControladorDeGuardadAlternativo(juego,juegoVista);
 	}
 	

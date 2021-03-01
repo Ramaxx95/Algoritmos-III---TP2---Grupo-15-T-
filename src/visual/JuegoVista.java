@@ -1,5 +1,6 @@
 package visual;
 
+import algoritmo.Personaje;
 import algoritmo.Posicion;
 import control.ControladorDeJuego;
 import javafx.scene.image.Image;
@@ -40,6 +41,10 @@ public class JuegoVista {
 
 	public void moverPersonaje(Posicion posAux) {
 		dibujoVista.moverPersonaje(posAux);
+	}
+	
+	public void dibujarPosicionActual(Personaje un_personaje){
+		dibujoVista.actualizarPosicion(un_personaje);
 	}
 
 	public void borrarDibujo() {

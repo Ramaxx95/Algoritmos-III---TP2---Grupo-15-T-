@@ -4,8 +4,9 @@ import algoritmo.Algoritmo;
 import algoritmo.Personaje;
 import dibujos.Dibujo;
 import excepciones.NoHayAlgoritmoGuardadoException;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import junit.framework.Assert;
+import static org.junit.Assert.*;
+import org.junit.Test;
 import bloques.*;
 
 public class InvertirComportamientoTest {

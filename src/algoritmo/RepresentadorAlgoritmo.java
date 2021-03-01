@@ -15,10 +15,10 @@ public class RepresentadorAlgoritmo {
     public ArrayList<String> representar(Juego juego ){
     	
     	Algoritmo algoritmo = juego.pasarAlgoritmo();
-    	ArrayList<Bloques> listaDeBloques = algoritmo.getAlgoritmo();
+    	ArrayList<Bloque> listaDeBloques = algoritmo.getAlgoritmo();
     	for(int i = 0; i < listaDeBloques.size();i++) {
-    		String Aux = listaDeBloques.get(i).ubicacion();
-    		ubicaciones.add(Aux);
+    		//String Aux = listaDeBloques.get(i).ubicacion();
+    		//ubicaciones.add(Aux);
     	}
     	
 		return ubicaciones;

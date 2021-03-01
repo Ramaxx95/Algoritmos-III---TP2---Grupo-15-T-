@@ -1,5 +1,6 @@
 package visual;
 
+import algoritmo.Personaje;
 import algoritmo.Posicion;
 import control.ControladorDeJuego;
 import javafx.geometry.HPos;
@@ -66,15 +67,21 @@ public class DibujoVista {
 		final Circle circuloAux = new Circle(5,Color.BLUE);
 		GridPane.setHalignment(circuloAux, HPos.CENTER);
 		
-		int columna = GridPane.getColumnIndex(circulo);
-		int fila = GridPane.getRowIndex(circulo);
+		int columna = posAux.getColumna();
+		int fila = posAux.getFila();
 		tablero.add(circuloAux, columna, fila);
 		
-		int filaX = 5 - posAux.getColumna();
+		/*int filaX = 5 - posAux.getColumna();
 		int columnaFinal = 5 + filaX;
 		
 		GridPane.setColumnIndex(circulo, posAux.getFila() );
-		GridPane.setRowIndex(circulo, columnaFinal );
+		GridPane.setRowIndex(circulo, columnaFinal );*/
+	}
+	
+	public void actualizarPosicion(Personaje un_personaje) {
+		Posicion pos_personaje = un_personaje.getPosicion();
+		GridPane.setColumnIndex(circulo, pos_personaje.getColumna());
+		GridPane.setRowIndex(circulo, pos_personaje.getFila());
 	}
 
 	public void resetearTablero() {

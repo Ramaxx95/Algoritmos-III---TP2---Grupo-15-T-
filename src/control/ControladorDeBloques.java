@@ -13,6 +13,7 @@ public class ControladorDeBloques{
 	public static String repetirDosVeces = "File:src/img/repetir_x2.png";
 	public static String repetirTresVeces = "File:src/img/repetir_x3.png";
 	public static String invertirComportamiento = "File:src/img/invertir.png";
+	public static String algoritmoPersonalizado = "File:src/img/algoritmo_personalizado.png";
 	
 	public ControladorDeBloques() {
 		

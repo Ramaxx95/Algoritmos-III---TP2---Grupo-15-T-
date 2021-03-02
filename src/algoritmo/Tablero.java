@@ -48,7 +48,9 @@ public class Tablero {
     }
 	
     public ArrayList<Bloque> darAlgoritmoGuardado(){
-        return this.algoritmo_guardado;
+    	ArrayList<Bloque> algoritmo_guardadoAux = this.algoritmo_guardado;
+    	this.algoritmo_guardado = new ArrayList<>();
+        return algoritmo_guardadoAux;
     }
 
 	public Dibujo mostrarDibujo() {

@@ -16,12 +16,12 @@ import java.util.Optional;
 
 public class JuegoVista {
 	
-	VBox contenedorPrincipal;
-	DibujoVista dibujoVista;
-	AlgoritmoVista algoritmoVista;
-	CreadorDeBloquesVista creadorDeBloquesVista;
-	ControladorDeJuego controladorDeJuego;
-	ControladorDeDibujo controladorDeDibujo;
+	private VBox contenedorPrincipal;
+	private DibujoVista dibujoVista;
+	private AlgoritmoVista algoritmoVista;
+	private CreadorDeBloquesVista creadorDeBloquesVista;
+	private ControladorDeJuego controladorDeJuego;
+	private ControladorDeDibujo controladorDeDibujo;
 	
 	public JuegoVista(){
 		contenedorPrincipal = new VBox();

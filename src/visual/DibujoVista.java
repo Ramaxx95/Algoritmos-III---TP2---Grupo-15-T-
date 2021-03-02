@@ -75,7 +75,7 @@ public class DibujoVista {
 		Posicion pos_personaje = un_personaje.getPosicion();
 		Posicion posicionInicial = this.posicionAdaptada(pos_personaje);
 		AnchorPane.setTopAnchor(circulo, (double) posicionInicial.getFila() -10 );
-        AnchorPane.setLeftAnchor(circulo, (double) posicionInicial.getColumna() * 50 -10  );
+        AnchorPane.setLeftAnchor(circulo, (double) posicionInicial.getColumna() -10  );
 		
 	}
 
@@ -94,6 +94,7 @@ public class DibujoVista {
         AnchorPane.setTopAnchor(circulo2, finaly -5);
         AnchorPane.setLeftAnchor(circulo2, finalx -5) ;
 	}
+	
 
 	public void dibujarLinea(Posicion posActual, Posicion posAux) {
 		Line lineaAux = new Line();

@@ -32,39 +32,39 @@ public class CreadorDeBloquesVista {
 		
 		Button subir = new Button("Subir");
 		subir.setOnAction(e -> { 
-			controladorDeJuego.aÃ±adirBloque( new CreadorDeMoverArriba(),ControladorDeBloques.moverArriba); });
+			controladorDeJuego.añadirBloque( new CreadorDeMoverArriba(),ControladorDeBloques.moverArriba); });
 		
 		Button bajar = new Button("Bajar");
 		bajar.setOnAction(e -> { 
-			controladorDeJuego.aÃ±adirBloque( new CreadorDeMoverAbajo(),ControladorDeBloques.moverAbajo); });
+			controladorDeJuego.añadirBloque( new CreadorDeMoverAbajo(),ControladorDeBloques.moverAbajo); });
 
 		Button derecha = new Button("Derecha");
 		derecha.setOnAction(e -> { 
-			controladorDeJuego.aÃ±adirBloque( new CreadorDeMoverDerecha(),ControladorDeBloques.moverDerecha ); });
+			controladorDeJuego.añadirBloque( new CreadorDeMoverDerecha(),ControladorDeBloques.moverDerecha ); });
 
 		Button izquierda = new Button("izquierda");
 		izquierda.setOnAction(e -> { 
-			controladorDeJuego.aÃ±adirBloque( new CreadorDeMoverIzquierda(),ControladorDeBloques.moverIzquierda ); });
+			controladorDeJuego.añadirBloque( new CreadorDeMoverIzquierda(),ControladorDeBloques.moverIzquierda ); });
 
 		Button subirLapiz = new Button("Subir Lapiz");
 		subirLapiz.setOnAction(e -> { 
-			controladorDeJuego.aÃ±adirBloque( new CreadorDeSubirLapiz(),ControladorDeBloques.subirLapiz ); });
+			controladorDeJuego.añadirBloque( new CreadorDeSubirLapiz(),ControladorDeBloques.subirLapiz ); });
 
 		Button bajarLapiz = new Button("Bajar Lapiz");
 		bajarLapiz.setOnAction(e -> { 
-			controladorDeJuego.aÃ±adirBloque( new CreadorDeBajarLapiz(),ControladorDeBloques.bajarLapiz ); });
+			controladorDeJuego.añadirBloque( new CreadorDeBajarLapiz(),ControladorDeBloques.bajarLapiz ); });
 		
 		Button repeticionX2 = new Button("Repetir dos veces");
 		repeticionX2.setOnAction(e -> { 
-			controladorDeJuego.aÃ±adirBloqueContenedor( new CreadorDeRepetirDosVeces(),ControladorDeBloques.repetirDosVeces ); });
+			controladorDeJuego.añadirBloqueContenedor( new CreadorDeRepetirDosVeces(),ControladorDeBloques.repetirDosVeces ); });
 
 		Button repeticionX3 = new Button("Repetir tres veces");
 		repeticionX3.setOnAction(e -> { 
-			controladorDeJuego.aÃ±adirBloqueContenedor( new CreadorDeRepetirTresVeces(),ControladorDeBloques.repetirTresVeces ); });
+			controladorDeJuego.añadirBloqueContenedor( new CreadorDeRepetirTresVeces(),ControladorDeBloques.repetirTresVeces ); });
 		
 		Button invertir = new Button("Invertir Comportamiento");
 		invertir.setOnAction(e -> {
-			controladorDeJuego.aÃ±adirBloqueContenedor(new CreadorDeInvertirComportamiento(), ControladorDeBloques.invertirComportamiento);
+			controladorDeJuego.añadirBloqueContenedor(new CreadorDeInvertirComportamiento(), ControladorDeBloques.invertirComportamiento);
 		});
 		
 		HBox box = new HBox();

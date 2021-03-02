@@ -44,17 +44,24 @@ public class DibujoTest {
 		Posicion posicionDos = new Posicion(0,1);
 		Posicion posicionTres = new Posicion(0,2);
 		Personaje personaje = new Personaje();
+		Personaje personaje2 = new Personaje();
 		
 		personaje.bajarLapiz();
-		
 		dibujo.DibujarEn(posicionUno, personaje);
-		otroDibujo.DibujarEn(posicionUno, personaje);
-		
+		personaje.moverseA(0, 1);
+		dibujo.DibujarEn(posicionUno, personaje);
+		personaje.moverseA(0, 1);
 		dibujo.DibujarEn(posicionDos, personaje);
-		otroDibujo.DibujarEn(posicionDos, personaje);
 		
-		dibujo.DibujarEn(posicionTres, personaje);
-		otroDibujo.DibujarEn(posicionTres, personaje);
+		
+		personaje2.bajarLapiz();
+		otroDibujo.DibujarEn(posicionUno, personaje2);
+		personaje2.moverseA(0, 1);
+		otroDibujo.DibujarEn(posicionUno, personaje2);
+		personaje2.moverseA(0, 1);
+		otroDibujo.DibujarEn(posicionDos, personaje2);
+		
+		
 		
 		assertTrue(dibujo.EsIgualA(otroDibujo));
 	}
@@ -68,19 +75,25 @@ public class DibujoTest {
 		Posicion posicionTres = new Posicion(0,2);
 		Posicion posicionCuatro = new Posicion(0,3);
 		Personaje personaje = new Personaje();
+		Personaje personaje2 = new Personaje();
 
-        	personaje.bajarLapiz();
-		
+        personaje.bajarLapiz();
 		dibujo.DibujarEn(posicionUno, personaje);
-		otroDibujo.DibujarEn(posicionUno, personaje);
-		
+		personaje.moverseA(0, 1);
+		dibujo.DibujarEn(posicionUno, personaje);
+		personaje.moverseA(0, 2);
 		dibujo.DibujarEn(posicionDos, personaje);
-		otroDibujo.DibujarEn(posicionDos, personaje);
 		
-		dibujo.DibujarEn(posicionTres, personaje);
-		otroDibujo.DibujarEn(posicionCuatro, personaje);
+		
+		personaje2.bajarLapiz();
+		otroDibujo.DibujarEn(posicionUno, personaje2);
+		personaje.moverseA(0, 1);
+		otroDibujo.DibujarEn(posicionUno, personaje2);
+		personaje.moverseA(0, 3);
+		otroDibujo.DibujarEn(posicionDos, personaje2);
 		
 		assertFalse(dibujo.EsIgualA(otroDibujo));
+		
 	}
 
 	@Test
@@ -95,6 +108,7 @@ public class DibujoTest {
 		tablero_prueba.ejecutarAlgoritmoCon(personaje_prueba);
 		
 		assertFalse(tablero_prueba.dibujoVacio());
+		
 	}
 	
 	@Test

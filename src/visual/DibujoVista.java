@@ -27,7 +27,6 @@ public class DibujoVista {
 	private Line linea;
 	
 	public DibujoVista(int unAncho, int unAlto){
-		//configuracion de la vista dibujo
 		vbox = new VBox();
 		circulo = new Circle(10,Color.BLACK);
 		anchor  = new AnchorPane();
@@ -70,40 +69,9 @@ public class DibujoVista {
 	public void setControlador(ControladorDeJuego unControladorDeJuego) {
 		controladorDeJuego = unControladorDeJuego;
 	}
-
-	public void moverPersonaje(Posicion posAux) {
-		int filaX = 5 - posAux.getFila();
-		int filaFinal = 5 + filaX;
-		
-		double finalx = (double) (posAux.getColumna() * 50);
-        double finaly = (double) (filaFinal * 50);
-        Circle circulo2 = new Circle(5,Color.BLUE);
-        anchor.getChildren().addAll(circulo2);
-        AnchorPane.setTopAnchor(circulo2, finaly -5);
-        AnchorPane.setLeftAnchor(circulo2, finalx -5) ;
-        double absolutoX = Math.abs(linea.getStartX() - finalx);
-        double absolutoY = Math.abs(linea.getStartY() - finaly);
-        if( absolutoX+absolutoY   < 100 ) {
-        	linea.setEndX(finalx);
-	        linea.setEndY(finaly);
-	        anchor.getChildren().addAll(linea);
-        }
-        /*
-        if( (Math.abs(linea.getStartX() - finalx) < 100) && (Math.abs(linea.getStartY() - finaly) < 100)   ) {
-        	linea.setEndX(finalx);
-	        linea.setEndY(finaly);
-	        anchor.getChildren().addAll(linea);
-        }
-        */
-	    Line lineaAux = new Line();
-	    lineaAux.setStartX( finalx );
-	    lineaAux.setStartY( finaly);
-	    linea = lineaAux;
-	}
 	
 	public void actualizarPosicion(Personaje un_personaje) {
 		Posicion pos_personaje = un_personaje.getPosicion();
-		this.moverPersonaje(pos_personaje);
 		int filaX = 5 - pos_personaje.getFila();
 		int filaFinal = 5 + filaX;
 		AnchorPane.setTopAnchor(circulo, (double) (filaFinal * 50) -10 );
@@ -114,6 +82,37 @@ public class DibujoVista {
 	public void resetearTablero() {
 		anchor.getChildren().clear();
 		this.cargarTableroDibujo(anchor);
+	}
+
+	public void marcarPunto(Posicion posAux) {
+		int filaX = 5 - posAux.getFila();
+		int filaFinal = 5 + filaX;
+		
+		double finalx = (double) (posAux.getColumna() * 50);
+        double finaly = (double) (filaFinal * 50);
+        Circle circulo2 = new Circle(5,Color.BLUE);
+        anchor.getChildren().addAll(circulo2);
+        AnchorPane.setTopAnchor(circulo2, finaly -5);
+        AnchorPane.setLeftAnchor(circulo2, finalx -5) ;
+	}
+
+	public void dibujarLinea(Posicion posActual, Posicion posAux) {
+		
+		
+		Line lineaAux = new Line();
+		int filaX = 5 - posActual.getFila();
+		int filaFinal = 5 + filaX;
+		double inicialx = (double) (posActual.getColumna() * 50);
+        double inicialy = (double) (filaFinal * 50);
+        int xfilaX = 5 - posAux.getFila();
+		int xfilaFinal = 5 + xfilaX;
+		double finalx = (double) (posAux.getColumna() * 50);
+        double finaly = (double) (xfilaFinal * 50);
+        lineaAux.setStartX( inicialx );
+        lineaAux.setStartY( inicialy);
+        lineaAux.setEndX(finalx);
+        lineaAux.setEndY(finaly);
+        anchor.getChildren().addAll(lineaAux);
 	}
 }
 

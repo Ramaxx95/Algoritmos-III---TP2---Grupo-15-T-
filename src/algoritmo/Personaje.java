@@ -27,6 +27,7 @@ public class Personaje {
     public void resetearPosicion(){
         Posicion posicionAReemplazar = new Posicion(5,5);
         this.posicion.reemplazar(posicionAReemplazar);
+        this.levantarLapiz();
     }
 
     public void levantarLapiz(){

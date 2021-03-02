@@ -1,4 +1,4 @@
-package bloques_test;
+package bloquesTest;
 
 import junit.framework.Assert;
 import static org.junit.Assert.*;

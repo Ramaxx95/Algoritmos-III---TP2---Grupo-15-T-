@@ -1,4 +1,4 @@
-package bloques_test;
+package bloquesTest;
 
 import algoritmo.Algoritmo;
 import algoritmo.Personaje;

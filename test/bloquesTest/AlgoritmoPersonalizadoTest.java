@@ -1,9 +1,11 @@
-package bloques_test;
+package bloquesTest;
 
 import dibujos.Dibujo;
 import excepciones.NoHayAlgoritmoGuardadoException;
 import junit.framework.Assert;
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.Test;
 import algoritmo.*;
 import bloques.*;

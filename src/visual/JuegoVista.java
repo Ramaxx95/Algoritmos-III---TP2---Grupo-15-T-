@@ -2,7 +2,9 @@ package visual;
 
 import algoritmo.Personaje;
 import algoritmo.Posicion;
+import control.ControladorDeDibujo;
 import control.ControladorDeJuego;
+import dibujos.Dibujo;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -14,6 +16,7 @@ public class JuegoVista {
 	AlgoritmoVista algoritmoVista;
 	CreadorDeBloquesVista creadorDeBloquesVista;
 	ControladorDeJuego controladorDeJuego;
+	ControladorDeDibujo controladorDeDibujo;
 	
 	public JuegoVista(){
 		contenedorPrincipal = new VBox();
@@ -24,7 +27,7 @@ public class JuegoVista {
 				algoritmoVista.getContenedor());
 		
 		creadorDeBloquesVista = new CreadorDeBloquesVista();
-		
+		controladorDeDibujo = new ControladorDeDibujo(dibujoVista);
 		contenedorPrincipal.getChildren().addAll(BoxAux,creadorDeBloquesVista.getContenedor());
 	}
 
@@ -38,10 +41,13 @@ public class JuegoVista {
 		dibujoVista.setControlador(unControladorDeJuego);
 		algoritmoVista.setControlador(unControladorDeJuego);
 	}
-
+	
+	/*
 	public void moverPersonaje(Posicion posAux) {
 		dibujoVista.moverPersonaje(posAux);
 	}
+	*/
+	
 	
 	public void dibujarPosicionActual(Personaje un_personaje){
 		dibujoVista.actualizarPosicion(un_personaje);
@@ -67,5 +73,8 @@ public class JuegoVista {
 		this.borrarDibujo();
 		this.algoritmoVista.reiniciar();
 	}
-	
+
+	public void dibujarCon(Dibujo dibujo) {
+		controladorDeDibujo.dibujarCon(dibujo);
+	}
 }

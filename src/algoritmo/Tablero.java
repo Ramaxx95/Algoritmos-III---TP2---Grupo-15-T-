@@ -3,26 +3,23 @@ package algoritmo;
 import bloques.Bloque;
 import bloques.SectorBloques;
 import dibujos.Dibujo;
-import dibujos.SectorDibujo;
 
 import java.util.ArrayList;
 
 public class Tablero {
 
     private Algoritmo sector_algoritmo;
-    private SectorDibujo sector_dibujo;
-    private SectorBloques sector_bloques;
+    private Dibujo dibujo;
     private ArrayList<Bloque> algoritmo_guardado;
 
     public Tablero(){
         this.sector_algoritmo = new Algoritmo();
-        this.sector_dibujo = new SectorDibujo();
-        this.sector_bloques = new SectorBloques();
+        this.dibujo = new Dibujo();
         this.algoritmo_guardado = new ArrayList<>();
     }
 
     public void ejecutarAlgoritmoCon(Personaje personaje){
-        this.sector_algoritmo.ejecutar(personaje, this.sector_dibujo.getDibujo());
+        this.sector_algoritmo.ejecutar(personaje, this.dibujo);
     }
 
     public void agregarBloqueAlAlgoritmo(Bloque un_bloque){
@@ -30,7 +27,7 @@ public class Tablero {
     }
     
     public boolean dibujoVacio(){
-        return this.sector_dibujo.getDibujo().estaEnBlanco();
+        return this.dibujo.estaEnBlanco();
     }
     
     public void reiniciarAlgoritmo(){
@@ -39,7 +36,7 @@ public class Tablero {
     }
     
     public void borrarDibujo() {
-    	this.sector_dibujo.borrarDibujo();
+    	this.dibujo.borrar();;
     }
     
     public void guardarAlgoritmoActual(){
@@ -51,7 +48,7 @@ public class Tablero {
     }
 
 	public Dibujo mostrarDibujo() {
-		return sector_dibujo.getDibujo();
+		return this.dibujo;
 	}
     
 }

@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import junit.framework.Assert;
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
+
 import org.junit.Test;
 
 public class PosicionTest {
@@ -50,4 +52,20 @@ public class PosicionTest {
 
         assertEquals(1, posicion.getFila());
     }
+    
+    /*
+    @Test
+    public void test05MoverseUnPasoHaciaArribaEnElEjeYAlteraElValorFilaDeLaPosicion(){
+        
+        HashMap<Posicion, Posicion> map = new HashMap<>();
+        Posicion posicion = new Posicion(1, 0);
+        Posicion posicion2 = new Posicion(1, 1);
+        Posicion posicion3 = new Posicion(2, 1);
+        
+        map.put(posicion, posicion2);
+        map.put(posicion2, posicion3);
+        
+        assertTrue( posicion2.equals(map.get(posicion)) );
+    }
+    */
 }

@@ -26,13 +26,9 @@ public class ControladorDeJuego {
 	public void ejecutar() {
 		this.borrarDibujo();
 		juego.ejecutarAlgoritmo();
-		Dibujo dibujoAux = juego.mostrarDibujo();
-		ArrayList<Posicion> posiciones_tablero = dibujoAux.getDibujado();
+		Dibujo dibujo = juego.mostrarDibujo();
+		juegoVista.dibujarCon(dibujo);
 		
-		for(int i = 0; i<posiciones_tablero.size();i++ ) {
-			Posicion posAux = posiciones_tablero.get(i);
-			juegoVista.moverPersonaje(posAux);
-		}
 		Personaje personaje = juego.getPersonaje();
 		juegoVista.dibujarPosicionActual(personaje);
 	}

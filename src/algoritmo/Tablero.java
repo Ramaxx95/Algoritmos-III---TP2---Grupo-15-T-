@@ -46,6 +46,10 @@ public class Tablero {
     public Algoritmo darAlgoritmo(){
         return this.sector_algoritmo;
     }
+	
+    public ArrayList<Bloque> darAlgoritmoGuardado(){
+        return this.algoritmo_guardado;
+    }
 
 	public Dibujo mostrarDibujo() {
 		return this.dibujo;

@@ -3,7 +3,7 @@ package visual;
 import bloques.Bloque;
 import control.ControladorDeBloques;
 import control.ControladorDeJuego;
-import excepciones.NoHayAlgoritmoParaGuardarException;
+import excepciones.NoHayAlgoritmoGuardadoException;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -36,39 +36,39 @@ public class CreadorDeBloquesVista {
 		
 		Button subir = new Button("Subir");
 		subir.setOnAction(e -> { 
-			controladorDeJuego.añadirBloque( new CreadorDeMoverArriba(),ControladorDeBloques.moverArriba); });
+			controladorDeJuego.guardarBloque( new CreadorDeMoverArriba(),ControladorDeBloques.moverArriba); });
 		
 		Button bajar = new Button("Bajar");
 		bajar.setOnAction(e -> { 
-			controladorDeJuego.añadirBloque( new CreadorDeMoverAbajo(),ControladorDeBloques.moverAbajo); });
+			controladorDeJuego.guardarBloque( new CreadorDeMoverAbajo(),ControladorDeBloques.moverAbajo); });
 
 		Button derecha = new Button("Derecha");
 		derecha.setOnAction(e -> { 
-			controladorDeJuego.añadirBloque( new CreadorDeMoverDerecha(),ControladorDeBloques.moverDerecha ); });
+			controladorDeJuego.guardarBloque( new CreadorDeMoverDerecha(),ControladorDeBloques.moverDerecha ); });
 
 		Button izquierda = new Button("izquierda");
 		izquierda.setOnAction(e -> { 
-			controladorDeJuego.añadirBloque( new CreadorDeMoverIzquierda(),ControladorDeBloques.moverIzquierda ); });
+			controladorDeJuego.guardarBloque( new CreadorDeMoverIzquierda(),ControladorDeBloques.moverIzquierda ); });
 
 		Button subirLapiz = new Button("Subir Lapiz");
 		subirLapiz.setOnAction(e -> { 
-			controladorDeJuego.añadirBloque( new CreadorDeSubirLapiz(),ControladorDeBloques.subirLapiz ); });
+			controladorDeJuego.guardarBloque( new CreadorDeSubirLapiz(),ControladorDeBloques.subirLapiz ); });
 
 		Button bajarLapiz = new Button("Bajar Lapiz");
 		bajarLapiz.setOnAction(e -> { 
-			controladorDeJuego.añadirBloque( new CreadorDeBajarLapiz(),ControladorDeBloques.bajarLapiz ); });
+			controladorDeJuego.guardarBloque( new CreadorDeBajarLapiz(),ControladorDeBloques.bajarLapiz ); });
 		
 		Button repeticionX2 = new Button("Repetir dos veces");
 		repeticionX2.setOnAction(e -> { 
-			controladorDeJuego.añadirBloqueContenedor( new CreadorDeRepetirDosVeces(),ControladorDeBloques.repetirDosVeces ); });
+			controladorDeJuego.guardarBloqueContenedor( new CreadorDeRepetirDosVeces(),ControladorDeBloques.repetirDosVeces ); });
 
 		Button repeticionX3 = new Button("Repetir tres veces");
 		repeticionX3.setOnAction(e -> { 
-			controladorDeJuego.añadirBloqueContenedor( new CreadorDeRepetirTresVeces(),ControladorDeBloques.repetirTresVeces ); });
+			controladorDeJuego.guardarBloqueContenedor( new CreadorDeRepetirTresVeces(),ControladorDeBloques.repetirTresVeces ); });
 		
 		Button invertir = new Button("Invertir Comportamiento");
 		invertir.setOnAction(e -> {
-			controladorDeJuego.añadirBloqueContenedor(new CreadorDeInvertirComportamiento(), ControladorDeBloques.invertirComportamiento);
+			controladorDeJuego.guardarBloqueContenedor(new CreadorDeInvertirComportamiento(), ControladorDeBloques.invertirComportamiento);
 		});
 		
 		Button boton_vacio = new Button("  ");
@@ -89,8 +89,8 @@ public class CreadorDeBloquesVista {
 		Button guardarAlgoritmo = new Button(nombre);
 		guardarAlgoritmo.setOnAction(e -> {
 			try {
-				controladorDeJuego.añadirBloque(new CreadorDeAlgoritmoPersonalizado(algoritmo), ControladorDeBloques.algoritmoPersonalizado);
-			} catch (NoHayAlgoritmoParaGuardarException excepcion) {
+				controladorDeJuego.guardarBloque(new CreadorDeAlgoritmoPersonalizado(algoritmo), ControladorDeBloques.algoritmoPersonalizado);
+			} catch (NoHayAlgoritmoGuardadoException excepcion) {
 				excepcion.printStackTrace();
 			}
 		});

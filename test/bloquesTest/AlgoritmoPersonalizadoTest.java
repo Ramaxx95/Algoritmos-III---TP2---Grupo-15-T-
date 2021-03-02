@@ -5,7 +5,10 @@ import excepciones.NoHayAlgoritmoGuardadoException;
 import junit.framework.Assert;
 import static org.junit.Assert.*;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 import algoritmo.*;
 import bloques.*;
 
@@ -13,12 +16,12 @@ public class AlgoritmoPersonalizadoTest {
 	
 	
     @Rule
-    public ExpectedException thrown = ExpectedException.name();
+    public ExpectedException thrown = ExpectedException.none();
     @Test
-    public void test01TratarDeGuardarUnAlgoritmoCuandoNoSeAgregoNingunBloqueAEsteSaltaError(){
+    public void test01TratarDeGuardarUnAlgoritmoCuandoNoSeAgregoNingunBloqueAEsteSaltaError() throws NoHayAlgoritmoGuardadoException{
 
         Tablero tablero = new Tablero();
-        thrown.expected(NoHayAlgoritmoParaGuardarException.class);
+        thrown.expect(NoHayAlgoritmoGuardadoException.class);
         AlgoritmoPersonalizado bloque_guardado = new AlgoritmoPersonalizado(tablero.darAlgoritmoGuardado());
 
     }
@@ -46,7 +49,7 @@ public class AlgoritmoPersonalizadoTest {
     }
 
     @Test
-    public void test03UsarInvertirComportamientoEnUnAlgoritmoGuardadoInvierteTodosLosBloquesQueContiene() throws NoHayAlgoritmoParaGuardarException {
+    public void test03UsarInvertirComportamientoEnUnAlgoritmoGuardadoInvierteTodosLosBloquesQueContiene() throws NoHayAlgoritmoGuardadoException {
 
         Tablero tablero = new Tablero();
         MoverAbajo bloque_abajo = new MoverAbajo();

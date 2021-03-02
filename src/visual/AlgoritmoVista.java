@@ -1,7 +1,7 @@
 package visual;
 
 import control.ControladorDeJuego;
-import excepciones.NoHayAlgoritmoParaGuardarException;
+import excepciones.NoHayAlgoritmoGuardadoException;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -35,7 +35,7 @@ public class AlgoritmoVista {
 		botonGuardar.setOnAction(e -> {
 			try {
 				controladorDeJuego.guardarAlgoritmo();
-			} catch (NoHayAlgoritmoParaGuardarException excepcion) {
+			} catch (NoHayAlgoritmoGuardadoException excepcion) {
 				excepcion.printStackTrace();
 			}
 		});

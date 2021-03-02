@@ -66,7 +66,7 @@ public class principal extends Application {
 		Text tituloCred = new Text("Integrantes del proyecto:");
         tituloCred.setStyle("-fx-color:white;");
         Text vacio = new Text("");
-        Text nombre1 = new Text(", Ramiro.");
+        Text nombre1 = new Text("Lozano, Ramiro.");
         Text nombre2 = new Text("Sayos, Alberto.");
         Text nombre3 = new Text("Arrua, Rocio.");
         nombres.setAlignment(Pos.CENTER);

@@ -14,21 +14,23 @@ public class ControladorDeGuardadAlternativo extends ControladorDeGuardado {
 		juego = unJuego;
 		juegoVista = unJuegoVista;
 	}
-	
-	public void añadirBloque(CreadorDeBloques creadorDeBloques, String img) {
-		Bloque bloque = creadorDeBloques.crearBloque();
-		juego.agregarAlBloque(bloque);
-		juegoVista.agregarImgBloqueContenedor(img);
-	}
-	
-	public void añadirBloqueContenedor(CreadorDeBloques creadorDeBloques, String img) {
-
-	}
 
 	@Override
 	public void finalizarContenedor() {
 		juego.finalizarBloqueContenedor();
 		juegoVista.finalizarImgBloqueContenedor();
+	}
+
+	@Override
+	protected void guardarBloque(CreadorDeBloques creadorDeBloques, String img) {
+		Bloque bloque = creadorDeBloques.crearBloque();
+		juego.agregarAlBloque(bloque);
+		juegoVista.agregarImgBloqueContenedor(img);
+	}
+
+	@Override
+	protected void guardarBloqueContenedor(CreadorDeBloques creadorDeBloques, String img) {
+		
 	}
 	
 }

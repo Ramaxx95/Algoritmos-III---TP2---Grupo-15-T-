@@ -16,14 +16,14 @@ public class AlgoritmoPersonalizado implements Bloque{
 
     }
 	
-   public AlgoritmoPersonalizado(ArrayList<Bloque> algoritmoAGuardar) throws NoHayAlgoritmoParaGuardarException {
+   public AlgoritmoPersonalizado(ArrayList<Bloque> algoritmoAGuardar) throws NoHayAlgoritmoGuardadoException {
 
         this.algoritmo = new ArrayList<>();
         this.agregarAlgoritmo(algoritmoAGuardar);
 
     }
 	
-    public void agregarAlgoritmo(ArrayList<Bloque> algoritmoAGuardar) throws NoHayAlgoritmoParaGuardarException {
+    public void agregarAlgoritmo(ArrayList<Bloque> algoritmoAGuardar) throws NoHayAlgoritmoGuardadoException {
         if (algoritmoAGuardar.size() == 0){
             throw new NoHayAlgoritmoGuardadoException();
         }

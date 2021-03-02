@@ -7,7 +7,7 @@ import algoritmo.Personaje;
 import bloques.*;
 import creadores.CreadorDeBloques;
 import dibujos.Dibujo;
-import excepciones.NoHayAlgoritmoParaGuardarException;
+import excepciones.NoHayAlgoritmoGuardadoException;
 import visual.JuegoVista;
 
 public class ControladorDeJuego {
@@ -38,12 +38,12 @@ public class ControladorDeJuego {
 		juegoVista.borrarDibujo();
 	}
 
-	public void añadirBloque(CreadorDeBloques creadorDeBloques, String img) {
-		controladorDeGuardado.añadirBloque(creadorDeBloques, img);
+	public void guardarBloque(CreadorDeBloques creadorDeBloques, String img) {
+		controladorDeGuardado.guardarBloque(creadorDeBloques, img);
 	}
 	
-	public void añadirBloqueContenedor(CreadorDeBloques creadorDeBloques, String img) {
-		controladorDeGuardado.añadirBloqueContenedor(creadorDeBloques, img);
+	public void guardarBloqueContenedor(CreadorDeBloques creadorDeBloques, String img) {
+		controladorDeGuardado.guardarBloqueContenedor(creadorDeBloques, img);
 		controladorDeGuardado = new ControladorDeGuardadAlternativo(juego,juegoVista);
 	}
 	
@@ -57,11 +57,11 @@ public class ControladorDeJuego {
 		juegoVista.reiniciar();
 	}
 	
-	public void guardarAlgoritmo() throws NoHayAlgoritmoParaGuardarException{
+	public void guardarAlgoritmo() throws NoHayAlgoritmoGuardadoException{
 		juego.guardarAlgoritmo();
 		ArrayList<Bloque> algoritmo_guardado = juego.pasarAlgoritmoGuardado();
 		if(algoritmo_guardado.size() == 0){
-			throw new NoHayAlgoritmoParaGuardarException();
+			throw new NoHayAlgoritmoGuardadoException();
 		}
 		juegoVista.insertarNombreAlgoritmoGuardado(algoritmo_guardado);
 	}

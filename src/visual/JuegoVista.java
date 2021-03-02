@@ -1,13 +1,18 @@
 package visual;
 
+import algoritmo.Algoritmo;
 import algoritmo.Personaje;
-import algoritmo.Posicion;
+import bloques.Bloque;
 import control.ControladorDeDibujo;
 import control.ControladorDeJuego;
+import javafx.scene.control.TextInputDialog;
 import dibujos.Dibujo;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+
+import java.util.ArrayList;
+import java.util.Optional;
 
 public class JuegoVista {
 	
@@ -76,5 +81,19 @@ public class JuegoVista {
 
 	public void dibujarCon(Dibujo dibujo) {
 		controladorDeDibujo.dibujarCon(dibujo);
+	}
+	
+	public void insertarNombreAlgoritmoGuardado(ArrayList<Bloque> algoritmo){
+		TextInputDialog ventana_dialogo = new TextInputDialog("");
+		ventana_dialogo.setTitle("Nombre del Algoritmo");
+		ventana_dialogo.setContentText("Introduzca el nombre de su Algoritmo Personalizado:");
+		Optional<String> respuesta = ventana_dialogo.showAndWait();
+		String nombre = "";
+
+		if (respuesta.isPresent()){
+			nombre = respuesta.get();
+		}
+
+		creadorDeBloquesVista.cargarBotonAlgoritmoPersonalizado(nombre, algoritmo);
 	}
 }

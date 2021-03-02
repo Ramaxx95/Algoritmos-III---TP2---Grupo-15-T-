@@ -16,18 +16,18 @@ public class AlgoritmoPersonalizado implements Bloque{
 
     }
 	
-    public AlgoritmoPersonalizado(Algoritmo algoritmoAGuardar) throws NoHayAlgoritmoGuardadoException{
+   public AlgoritmoPersonalizado(ArrayList<Bloque> algoritmoAGuardar) throws NoHayAlgoritmoParaGuardarException {
 
         this.algoritmo = new ArrayList<>();
         this.agregarAlgoritmo(algoritmoAGuardar);
 
     }
 	
-    public void agregarAlgoritmo(Algoritmo algoritmoAGuardar) throws NoHayAlgoritmoGuardadoException{
-        if (algoritmoAGuardar.getAlgoritmo().size() == 0){
+    public void agregarAlgoritmo(ArrayList<Bloque> algoritmoAGuardar) throws NoHayAlgoritmoParaGuardarException {
+        if (algoritmoAGuardar.size() == 0){
             throw new NoHayAlgoritmoGuardadoException();
         }
-        algoritmoAGuardar.getAlgoritmo().forEach(bloque -> this.algoritmo.add(bloque));
+        algoritmoAGuardar.forEach(bloque -> this.algoritmo.add(bloque));
     }
 
     @Override

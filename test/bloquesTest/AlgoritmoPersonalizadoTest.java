@@ -11,16 +11,18 @@ import bloques.*;
 
 public class AlgoritmoPersonalizadoTest {
 	
-	/*
+	
+    @Rule
+    public ExpectedException thrown = ExpectedException.name();
     @Test
     public void test01TratarDeGuardarUnAlgoritmoCuandoNoSeAgregoNingunBloqueAEsteSaltaError(){
 
         Tablero tablero = new Tablero();
+        thrown.expected(NoHayAlgoritmoParaGuardarException.class);
+        AlgoritmoPersonalizado bloque_guardado = new AlgoritmoPersonalizado(tablero.darAlgoritmoGuardado());
 
-        assertThrows(NoHayAlgoritmoGuardadoException.class, ()->{
-                AlgoritmoPersonalizado bloque_guardado = new AlgoritmoPersonalizado(tablero.darAlgoritmoGuardado());
     }
-    */
+    
 
     @Test
     public void test02GuardarTodoTipoDeBloques() throws NoHayAlgoritmoGuardadoException {

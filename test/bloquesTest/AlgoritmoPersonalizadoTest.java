@@ -15,18 +15,17 @@ public class AlgoritmoPersonalizadoTest {
     @Test
     public void test01TratarDeGuardarUnAlgoritmoCuandoNoSeAgregoNingunBloqueAEsteSaltaError(){
 
-        Algoritmo algoritmo = new Algoritmo();
+        Tablero tablero = new Tablero();
 
         assertThrows(NoHayAlgoritmoGuardadoException.class, ()->{
-                AlgoritmoPersonalizado bloque_guardado = new AlgoritmoPersonalizado(algoritmo);
-        });
+                AlgoritmoPersonalizado bloque_guardado = new AlgoritmoPersonalizado(tablero.darAlgoritmoGuardado());
     }
     */
 
     @Test
     public void test02GuardarTodoTipoDeBloques() throws NoHayAlgoritmoGuardadoException {
 
-        Algoritmo algoritmo = new Algoritmo();
+        Tablero tablero = new Tablero();
         MoverAbajo bloque_abajo = new MoverAbajo();
         RepetirDosVeces bloque_repetir = new RepetirDosVeces();
         InvertirComportamiento bloque_invertir = new InvertirComportamiento();
@@ -35,8 +34,9 @@ public class AlgoritmoPersonalizadoTest {
 
         bloque_repetir.agregarBloque(bloque_abajo);
         bloque_invertir.agregarBloque(bloque_repetir);
-        algoritmo.agregarBloque(bloque_invertir);
-        AlgoritmoPersonalizado bloque_guardado = new AlgoritmoPersonalizado(algoritmo);
+        tablero.agregarBloqueAlAlgoritmo(bloque_invertir);
+        tablero.guardarAlgoritmoActual();
+        AlgoritmoPersonalizado bloque_guardado = new AlgoritmoPersonalizado(tablero.darAlgoritmoGuardado());
 
         bloque_guardado.ejecutarBloque(personaje, dibujo);
 
@@ -44,22 +44,22 @@ public class AlgoritmoPersonalizadoTest {
     }
 
     @Test
-    public void test03UsarInvertirComportamientoENUnAlgoritmoGuardadoInvierteTodosLosBloquesQueContiene() throws NoHayAlgoritmoGuardadoException {
+    public void test03UsarInvertirComportamientoEnUnAlgoritmoGuardadoInvierteTodosLosBloquesQueContiene() throws NoHayAlgoritmoParaGuardarException {
 
-        Algoritmo algoritmo = new Algoritmo();
+        Tablero tablero = new Tablero();
         MoverAbajo bloque_abajo = new MoverAbajo();
         InvertirComportamiento bloque_invertir = new InvertirComportamiento();
         Personaje personaje = new Personaje();
-        Dibujo dibujo = new Dibujo();
 
-        algoritmo.agregarBloque(bloque_abajo);
-        algoritmo.agregarBloque(bloque_abajo);
-        AlgoritmoPersonalizado bloque_guardado = new AlgoritmoPersonalizado(algoritmo);
-        algoritmo.borrarBloques();
+        tablero.agregarBloqueAlAlgoritmo(bloque_abajo);
+        tablero.agregarBloqueAlAlgoritmo(bloque_abajo);
+        tablero.guardarAlgoritmoActual();
+        AlgoritmoPersonalizado bloque_guardado = new AlgoritmoPersonalizado(tablero.darAlgoritmoGuardado());
+        tablero.reiniciarAlgoritmo();
 
         bloque_invertir.agregarBloque(bloque_guardado);
-        algoritmo.agregarBloque(bloque_invertir);
-        algoritmo.ejecutar(personaje, dibujo);
+        tablero.agregarBloqueAlAlgoritmo(bloque_invertir);
+        tablero.ejecutarAlgoritmoCon(personaje);
 
         assertEquals(7, personaje.getPosicion().getFila());
     }

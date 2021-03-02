@@ -1,12 +1,16 @@
 package visual;
 
+import bloques.Bloque;
 import control.ControladorDeBloques;
 import control.ControladorDeJuego;
+import excepciones.NoHayAlgoritmoParaGuardarException;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import creadores.*;
+
+import java.util.ArrayList;
 
 public class CreadorDeBloquesVista {
 	private VBox vBox;
@@ -32,50 +36,66 @@ public class CreadorDeBloquesVista {
 		
 		Button subir = new Button("Subir");
 		subir.setOnAction(e -> { 
-			controladorDeJuego.a�adirBloque( new CreadorDeMoverArriba(),ControladorDeBloques.moverArriba); });
+			controladorDeJuego.añadirBloque( new CreadorDeMoverArriba(),ControladorDeBloques.moverArriba); });
 		
 		Button bajar = new Button("Bajar");
 		bajar.setOnAction(e -> { 
-			controladorDeJuego.a�adirBloque( new CreadorDeMoverAbajo(),ControladorDeBloques.moverAbajo); });
+			controladorDeJuego.añadirBloque( new CreadorDeMoverAbajo(),ControladorDeBloques.moverAbajo); });
 
 		Button derecha = new Button("Derecha");
 		derecha.setOnAction(e -> { 
-			controladorDeJuego.a�adirBloque( new CreadorDeMoverDerecha(),ControladorDeBloques.moverDerecha ); });
+			controladorDeJuego.añadirBloque( new CreadorDeMoverDerecha(),ControladorDeBloques.moverDerecha ); });
 
 		Button izquierda = new Button("izquierda");
 		izquierda.setOnAction(e -> { 
-			controladorDeJuego.a�adirBloque( new CreadorDeMoverIzquierda(),ControladorDeBloques.moverIzquierda ); });
+			controladorDeJuego.añadirBloque( new CreadorDeMoverIzquierda(),ControladorDeBloques.moverIzquierda ); });
 
 		Button subirLapiz = new Button("Subir Lapiz");
 		subirLapiz.setOnAction(e -> { 
-			controladorDeJuego.a�adirBloque( new CreadorDeSubirLapiz(),ControladorDeBloques.subirLapiz ); });
+			controladorDeJuego.añadirBloque( new CreadorDeSubirLapiz(),ControladorDeBloques.subirLapiz ); });
 
 		Button bajarLapiz = new Button("Bajar Lapiz");
 		bajarLapiz.setOnAction(e -> { 
-			controladorDeJuego.a�adirBloque( new CreadorDeBajarLapiz(),ControladorDeBloques.bajarLapiz ); });
+			controladorDeJuego.añadirBloque( new CreadorDeBajarLapiz(),ControladorDeBloques.bajarLapiz ); });
 		
 		Button repeticionX2 = new Button("Repetir dos veces");
 		repeticionX2.setOnAction(e -> { 
-			controladorDeJuego.a�adirBloqueContenedor( new CreadorDeRepetirDosVeces(),ControladorDeBloques.repetirDosVeces ); });
+			controladorDeJuego.añadirBloqueContenedor( new CreadorDeRepetirDosVeces(),ControladorDeBloques.repetirDosVeces ); });
 
 		Button repeticionX3 = new Button("Repetir tres veces");
 		repeticionX3.setOnAction(e -> { 
-			controladorDeJuego.a�adirBloqueContenedor( new CreadorDeRepetirTresVeces(),ControladorDeBloques.repetirTresVeces ); });
+			controladorDeJuego.añadirBloqueContenedor( new CreadorDeRepetirTresVeces(),ControladorDeBloques.repetirTresVeces ); });
 		
 		Button invertir = new Button("Invertir Comportamiento");
 		invertir.setOnAction(e -> {
-			controladorDeJuego.a�adirBloqueContenedor(new CreadorDeInvertirComportamiento(), ControladorDeBloques.invertirComportamiento);
+			controladorDeJuego.añadirBloqueContenedor(new CreadorDeInvertirComportamiento(), ControladorDeBloques.invertirComportamiento);
 		});
+		
+		Button boton_vacio = new Button("  ");
 		
 		HBox box = new HBox();
 		box.getChildren().addAll(textoBloques,finalizar);		
 		
 		HboxBLoque.getChildren().addAll(subir,bajar,derecha,izquierda,subirLapiz,bajarLapiz,repeticionX2,repeticionX3,invertir);
 		vBox.getChildren().addAll(box,HboxBLoque );
+		vBox.getChildren().add(boton_vacio);
 	}
 
 	public void setControlador(ControladorDeJuego unControladorDeJuego) {
 		controladorDeJuego = unControladorDeJuego;
+	}
+	
+	public void cargarBotonAlgoritmoPersonalizado(String nombre, ArrayList<Bloque> algoritmo){
+		Button guardarAlgoritmo = new Button(nombre);
+		guardarAlgoritmo.setOnAction(e -> {
+			try {
+				controladorDeJuego.añadirBloque(new CreadorDeAlgoritmoPersonalizado(algoritmo), ControladorDeBloques.algoritmoPersonalizado);
+			} catch (NoHayAlgoritmoParaGuardarException excepcion) {
+				excepcion.printStackTrace();
+			}
+		});
+
+		vBox.getChildren().add(2, guardarAlgoritmo);
 	}
 	
 }

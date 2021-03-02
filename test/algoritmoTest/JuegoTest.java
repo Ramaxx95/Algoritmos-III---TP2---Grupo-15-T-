@@ -148,7 +148,7 @@ public class JuegoTest {
         juego_prueba.agregarBloque(bloque_mover_derecha);
         juego_prueba.guardarAlgoritmo();
 
-        AlgoritmoPersonalizado bloque_algo = new AlgoritmoPersonalizado(juego_prueba.pasarAlgoritmo());
+        AlgoritmoPersonalizado bloque_algo = new AlgoritmoPersonalizado(juego_prueba.pasarAlgoritmoGuardado());
 
         juego_prueba.agregarBloque(bloque_algo); //agrega 2 bloques mas de moverse a la derecha
 
@@ -183,7 +183,7 @@ public class JuegoTest {
         juego_prueba.agregarBloque(bloque_mover_derecha);
         juego_prueba.agregarBloque(bloque_mover_derecha);
         juego_prueba.guardarAlgoritmo();
-        AlgoritmoPersonalizado bloque_algo = new AlgoritmoPersonalizado(juego_prueba.pasarAlgoritmo());
+        AlgoritmoPersonalizado bloque_algo = new AlgoritmoPersonalizado(juego_prueba.pasarAlgoritmoGuardado());
 
         juego_prueba.reiniciar();
         juego_prueba.agregarBloque(bloque_algo);
@@ -318,8 +318,9 @@ public class JuegoTest {
 
         juego_prueba.agregarBloque(bloque_mover_abajo);
         juego_prueba.agregarBloque(bloque_mover_abajo);
-        AlgoritmoPersonalizado bloque_algoritmo = new AlgoritmoPersonalizado(juego_prueba.pasarAlgoritmo());
         juego_prueba.guardarAlgoritmo();
+        AlgoritmoPersonalizado bloque_algoritmo = new AlgoritmoPersonalizado(juego_prueba.pasarAlgoritmoGuardado());
+        
         juego_prueba.reiniciar();
 
         bloque_invertir.agregarBloque(bloque_algoritmo);

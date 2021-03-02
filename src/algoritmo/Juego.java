@@ -6,6 +6,8 @@ import bloques.Bloque;
 import bloques.Contenedor;
 import dibujos.Dibujo;
 
+import java.util.ArrayList;
+
 public class Juego {
 
     private Tablero tablero;
@@ -40,6 +42,10 @@ public class Juego {
 
     public Algoritmo pasarAlgoritmo(){
         return this.tablero.darAlgoritmo();
+    }
+	
+    public ArrayList<Bloque> pasarAlgoritmoGuardado(){
+        return this.tablero.darAlgoritmoGuardado();
     }
 
     public void ejecutarAlgoritmo(){

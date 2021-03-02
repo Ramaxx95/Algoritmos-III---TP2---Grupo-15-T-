@@ -2,6 +2,7 @@ package bloquesTest;
 
 import algoritmo.Algoritmo;
 import algoritmo.Personaje;
+import algoritmo.Tablero;
 import dibujos.Dibujo;
 import excepciones.NoHayAlgoritmoGuardadoException;
 import junit.framework.Assert;
@@ -61,7 +62,7 @@ public class InvertirComportamientoTest {
     @Test
     public void test04InvertirElComportamientoEnUnAlgoritmoPersonalizadoHaceQueCadaBloqueSeComporteDeManeraInversa() throws NoHayAlgoritmoGuardadoException {
         Personaje personaje = new Personaje();
-        Algoritmo algoritmo = new Algoritmo();
+        Tablero tablero = new Tablero();
         MoverAbajo bloque_mover_abajo = new MoverAbajo();
         SubirLapiz bloque_subir_lapiz = new SubirLapiz();
         RepetirDosVeces bloque_repeticion = new RepetirDosVeces();
@@ -71,8 +72,9 @@ public class InvertirComportamientoTest {
 
         bloque_repeticion.agregarBloque(bloque_subir_lapiz);
         bloque_repeticion.agregarBloque(bloque_mover_abajo);
-        algoritmo.agregarBloque(bloque_repeticion);
-        bloque_algoritmo.agregarAlgoritmo(algoritmo);
+        tablero.agregarBloqueAlAlgoritmo(bloque_repeticion);
+        tablero.guardarAlgoritmoActual();
+        bloque_algoritmo.agregarAlgoritmo(tablero.darAlgoritmoGuardado());
         bloque_invertir.agregarBloque(bloque_algoritmo);
 
         bloque_invertir.ejecutarBloque(personaje, dibujo);

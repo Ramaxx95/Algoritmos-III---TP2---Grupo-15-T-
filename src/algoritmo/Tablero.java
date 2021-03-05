@@ -1,7 +1,6 @@
 package algoritmo;
 
 import bloques.Bloque;
-import bloques.SectorBloques;
 import dibujos.Dibujo;
 
 import java.util.ArrayList;

@@ -39,10 +39,6 @@ public class Juego {
     public void guardarAlgoritmo(){
         this.tablero.guardarAlgoritmoActual();
     }
-
-    public Algoritmo pasarAlgoritmo(){
-        return this.tablero.darAlgoritmo();
-    }
 	
     public ArrayList<Bloque> pasarAlgoritmoGuardado(){
         return this.tablero.darAlgoritmoGuardado();

@@ -5,6 +5,8 @@ import algoritmo.Personaje;
 import bloques.Bloque;
 import control.ControladorDeDibujo;
 import control.ControladorDeJuego;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.TextInputDialog;
 import dibujos.Dibujo;
 import javafx.scene.image.Image;
@@ -25,12 +27,14 @@ public class JuegoVista {
 	
 	public JuegoVista(){
 		contenedorPrincipal = new VBox();
+		contenedorPrincipal.setPadding(new Insets(20, 0, 20, 20));
 		dibujoVista = new DibujoVista(500,500);
 		algoritmoVista = new AlgoritmoVista();
 		HBox BoxAux = new HBox();
 		BoxAux.getChildren().addAll(dibujoVista.getContenedor(),
 				algoritmoVista.getContenedor());
-		
+		BoxAux.setAlignment(Pos.CENTER);
+		BoxAux.setPadding(new Insets(20, 20, 20, 20));
 		creadorDeBloquesVista = new CreadorDeBloquesVista();
 		controladorDeDibujo = new ControladorDeDibujo(dibujoVista);
 		contenedorPrincipal.getChildren().addAll(BoxAux,creadorDeBloquesVista.getContenedor());

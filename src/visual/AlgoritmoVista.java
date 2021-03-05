@@ -2,6 +2,7 @@ package visual;
 
 import control.ControladorDeJuego;
 import excepciones.NoHayAlgoritmoGuardadoException;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -24,8 +25,7 @@ public class AlgoritmoVista {
 	public AlgoritmoVista(){
 		scroll = new ScrollPane();
 	    scroll.setPrefSize(595, 200);
-		vbox = new VBox();		
-		scroll.setContent(vbox);
+		vbox = new VBox();
 		Button botonEjecutar = new Button("Ejecutar");
 		Button botonReiniciar = new Button("Reiniciar ");
 		Button botonGuardar = new Button("Guardar");
@@ -50,11 +50,13 @@ public class AlgoritmoVista {
 		HBox boxAlgoritmoHorizontal = new HBox(10);
 		Text textAlgoritmo = new Text("Algoritmo");
 		boxAlgoritmoHorizontal.getChildren().addAll(textAlgoritmo,botonEjecutar,botonReiniciar,botonGuardar);
-		vbox.getChildren().addAll(boxAlgoritmoHorizontal,tableroAlgoritmo);
+		scroll.setContent(tableroAlgoritmo);
+		scroll.setPrefSize(550, 550);
+		vbox.getChildren().addAll(boxAlgoritmoHorizontal,scroll);
 	}
 	
-	public ScrollPane getContenedor() {
-		return scroll;
+	public VBox getContenedor() {
+		return vbox;
 	}
 
 	public void setControlador(ControladorDeJuego unControladorDeJuego) {

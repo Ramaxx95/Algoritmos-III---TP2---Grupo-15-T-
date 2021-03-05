@@ -4,8 +4,12 @@ import algoritmo.Personaje;
 import algoritmo.Posicion;
 import control.ControladorDeJuego;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.Lighting;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -25,45 +29,55 @@ public class DibujoVista {
 	private int ancho;
 	private int alto;
 	private Line linea;
-	private static int FACTORDEADAPTACION = 50;
+	private ScrollPane scroll;
+	private int FACTORDEADAPTACION = 50;
+	private ImageView personaje; 
 	
 	public DibujoVista(int unAncho, int unAlto){
 		vbox = new VBox();
+		
 		circulo = new Circle(10,Color.BLACK);
+		Image imagen = new Image("File:src/img/personaje.png");
+		personaje = new ImageView(imagen);
 		anchor  = new AnchorPane();
 		linea = new Line();
+		scroll = new ScrollPane();
 		ancho = unAncho;
 		alto = unAlto;
         anchor.setPrefSize(ancho, alto);
+        anchor.setMaxSize(ancho, alto);
         anchor.setMinSize(ancho, alto);
 		Button boton = new Button("Borrar");
 		boton.setOnAction(e -> { controladorDeJuego.borrarDibujo(); });
-		this.cargarBoxDibujo(anchor, boton,vbox);
+		this.cargarBoxDibujo(anchor, boton);
 		
 	}
 
-	private void cargarBoxDibujo(AnchorPane anchor, Button boton, VBox vbox2) {
+	private void cargarBoxDibujo(AnchorPane anchor, Button boton) {
 		this.cargarTableroDibujo(anchor);
 		
 		HBox boxDibujar = new HBox(10);
 		Text textDibujo = new Text("dibujo");
 		boxDibujar.getChildren().addAll(textDibujo,boton);
-		
-		vbox.getChildren().addAll(boxDibujar,anchor);
+		scroll.setPrefSize(ancho+50, alto+50);
+		//vbox.getChildren().addAll(boxDibujar,anchor);
+		//scroll.setContent(vbox);
+		scroll.setContent(anchor);
+		vbox.getChildren().addAll(boxDibujar,scroll);
 		
 	}
 
 
 	private void cargarTableroDibujo(AnchorPane anchor) {
 		circulo.setEffect(new Lighting());
-		anchor.getChildren().add(circulo);
-		AnchorPane.setTopAnchor(circulo, (double) ((ancho/2) -10));
-        AnchorPane.setLeftAnchor(circulo, (double) ((alto/2) -10));
+		anchor.getChildren().add(personaje);
+		AnchorPane.setTopAnchor(personaje, (double) ((ancho/2)));
+        AnchorPane.setLeftAnchor(personaje, (double) ((alto/2)));
         linea.setStartX((ancho/2));
         linea.setStartY(alto/2);
 	}
 
-	public VBox getContenedor() {
+	public VBox  getContenedor() {
 		return vbox;
 	}
 
@@ -74,8 +88,8 @@ public class DibujoVista {
 	public void actualizarPosicion(Personaje un_personaje) {
 		Posicion pos_personaje = un_personaje.getPosicion();
 		Posicion posicionInicial = this.posicionAdaptada(pos_personaje);
-		AnchorPane.setTopAnchor(circulo, (double) posicionInicial.getFila() -10 );
-        AnchorPane.setLeftAnchor(circulo, (double) posicionInicial.getColumna() -10  );
+		AnchorPane.setTopAnchor(personaje, (double) posicionInicial.getFila() - 38 );
+        AnchorPane.setLeftAnchor(personaje, (double) posicionInicial.getColumna() -12 );
 		
 	}
 

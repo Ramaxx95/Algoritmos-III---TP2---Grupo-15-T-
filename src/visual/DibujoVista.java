@@ -71,8 +71,8 @@ public class DibujoVista {
 	private void cargarTableroDibujo(AnchorPane anchor) {
 		circulo.setEffect(new Lighting());
 		anchor.getChildren().add(personaje);
-		AnchorPane.setTopAnchor(personaje, (double) ((ancho/2)));
-        AnchorPane.setLeftAnchor(personaje, (double) ((alto/2)));
+		AnchorPane.setTopAnchor(personaje, (double) ((ancho/2) -38 ));
+        AnchorPane.setLeftAnchor(personaje, (double) ((alto/2) -12 ));
         linea.setStartX((ancho/2));
         linea.setStartY(alto/2);
 	}
